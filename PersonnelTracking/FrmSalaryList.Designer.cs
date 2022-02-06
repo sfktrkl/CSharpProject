@@ -31,6 +31,7 @@ namespace PersonnelTracking
         {
             this.rbLess = new System.Windows.Forms.RadioButton();
             this.groupBox = new System.Windows.Forms.GroupBox();
+            this.rbEquals = new System.Windows.Forms.RadioButton();
             this.rbMore = new System.Windows.Forms.RadioButton();
             this.cmbPosition = new System.Windows.Forms.ComboBox();
             this.btnClear = new System.Windows.Forms.Button();
@@ -48,18 +49,17 @@ namespace PersonnelTracking
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.panelTop = new System.Windows.Forms.Panel();
             this.panelRight = new System.Windows.Forms.Panel();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.panelBottom = new System.Windows.Forms.Panel();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.rbEquals = new System.Windows.Forms.RadioButton();
             this.cmbMonth = new System.Windows.Forms.ComboBox();
             this.txtSalary = new System.Windows.Forms.TextBox();
             this.txtYear = new System.Windows.Forms.TextBox();
             this.lblMonth = new System.Windows.Forms.Label();
             this.lblYear = new System.Windows.Forms.Label();
             this.lblSalary = new System.Windows.Forms.Label();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.panelBottom = new System.Windows.Forms.Panel();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.groupBox.SuspendLayout();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -89,6 +89,17 @@ namespace PersonnelTracking
             this.groupBox.Size = new System.Drawing.Size(184, 41);
             this.groupBox.TabIndex = 23;
             this.groupBox.TabStop = false;
+            // 
+            // rbEquals
+            // 
+            this.rbEquals.AutoSize = true;
+            this.rbEquals.Location = new System.Drawing.Point(114, 18);
+            this.rbEquals.Name = "rbEquals";
+            this.rbEquals.Size = new System.Drawing.Size(57, 17);
+            this.rbEquals.TabIndex = 2;
+            this.rbEquals.TabStop = true;
+            this.rbEquals.Text = "Equals";
+            this.rbEquals.UseVisualStyleBackColor = true;
             // 
             // rbMore
             // 
@@ -255,66 +266,6 @@ namespace PersonnelTracking
             this.panelRight.Size = new System.Drawing.Size(397, 144);
             this.panelRight.TabIndex = 18;
             // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Location = new System.Drawing.Point(93, 14);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 1;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            // 
-            // panelBottom
-            // 
-            this.panelBottom.Controls.Add(this.btnClose);
-            this.panelBottom.Controls.Add(this.btnDelete);
-            this.panelBottom.Controls.Add(this.btnUpdate);
-            this.panelBottom.Controls.Add(this.btnAdd);
-            this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBottom.Location = new System.Drawing.Point(0, 401);
-            this.panelBottom.Name = "panelBottom";
-            this.panelBottom.Size = new System.Drawing.Size(800, 49);
-            this.panelBottom.TabIndex = 8;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(713, 13);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 3;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(174, 13);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 2;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(12, 13);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 0;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            // 
-            // rbEquals
-            // 
-            this.rbEquals.AutoSize = true;
-            this.rbEquals.Location = new System.Drawing.Point(114, 18);
-            this.rbEquals.Name = "rbEquals";
-            this.rbEquals.Size = new System.Drawing.Size(57, 17);
-            this.rbEquals.TabIndex = 2;
-            this.rbEquals.TabStop = true;
-            this.rbEquals.Text = "Equals";
-            this.rbEquals.UseVisualStyleBackColor = true;
-            // 
             // cmbMonth
             // 
             this.cmbMonth.FormattingEnabled = true;
@@ -363,6 +314,56 @@ namespace PersonnelTracking
             this.lblSalary.Size = new System.Drawing.Size(36, 13);
             this.lblSalary.TabIndex = 51;
             this.lblSalary.Text = "Salary";
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(93, 14);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.TabIndex = 1;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            // 
+            // panelBottom
+            // 
+            this.panelBottom.Controls.Add(this.btnClose);
+            this.panelBottom.Controls.Add(this.btnDelete);
+            this.panelBottom.Controls.Add(this.btnUpdate);
+            this.panelBottom.Controls.Add(this.btnAdd);
+            this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelBottom.Location = new System.Drawing.Point(0, 401);
+            this.panelBottom.Name = "panelBottom";
+            this.panelBottom.Size = new System.Drawing.Size(800, 49);
+            this.panelBottom.TabIndex = 8;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(713, 13);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 3;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(174, 13);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 2;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(12, 13);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // FrmSalaryList
             // 

@@ -51,16 +51,16 @@ namespace PersonnelTracking
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.panelTop = new System.Windows.Forms.Panel();
             this.panelRight = new System.Windows.Forms.Panel();
+            this.txtDayAmount = new System.Windows.Forms.TextBox();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.panelLeft = new System.Windows.Forms.Panel();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.panelBottom = new System.Windows.Forms.Panel();
+            this.btnDisapprove = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.btnDisapprove = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.txtDayAmount = new System.Windows.Forms.TextBox();
             this.groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.panelTop.SuspendLayout();
@@ -270,6 +270,31 @@ namespace PersonnelTracking
             this.panelRight.Size = new System.Drawing.Size(397, 144);
             this.panelRight.TabIndex = 18;
             // 
+            // txtDayAmount
+            // 
+            this.txtDayAmount.Location = new System.Drawing.Point(75, 65);
+            this.txtDayAmount.Name = "txtDayAmount";
+            this.txtDayAmount.Size = new System.Drawing.Size(100, 20);
+            this.txtDayAmount.TabIndex = 15;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(313, 47);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 18;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(313, 18);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 17;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            // 
             // panelLeft
             // 
             this.panelLeft.Controls.Add(this.cmbPosition);
@@ -311,6 +336,15 @@ namespace PersonnelTracking
             this.panelBottom.Size = new System.Drawing.Size(800, 49);
             this.panelBottom.TabIndex = 8;
             // 
+            // btnDisapprove
+            // 
+            this.btnDisapprove.Location = new System.Drawing.Point(12, 13);
+            this.btnDisapprove.Name = "btnDisapprove";
+            this.btnDisapprove.Size = new System.Drawing.Size(75, 23);
+            this.btnDisapprove.TabIndex = 5;
+            this.btnDisapprove.Text = "Disapprove";
+            this.btnDisapprove.UseVisualStyleBackColor = true;
+            // 
             // btnClose
             // 
             this.btnClose.Location = new System.Drawing.Point(713, 13);
@@ -338,40 +372,7 @@ namespace PersonnelTracking
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
-            // 
-            // btnDisapprove
-            // 
-            this.btnDisapprove.Location = new System.Drawing.Point(12, 13);
-            this.btnDisapprove.Name = "btnDisapprove";
-            this.btnDisapprove.Size = new System.Drawing.Size(75, 23);
-            this.btnDisapprove.TabIndex = 5;
-            this.btnDisapprove.Text = "Disapprove";
-            this.btnDisapprove.UseVisualStyleBackColor = true;
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(313, 47);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 23);
-            this.btnClear.TabIndex = 18;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(313, 18);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnSearch.TabIndex = 17;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            // 
-            // txtDayAmount
-            // 
-            this.txtDayAmount.Location = new System.Drawing.Point(75, 65);
-            this.txtDayAmount.Name = "txtDayAmount";
-            this.txtDayAmount.Size = new System.Drawing.Size(100, 20);
-            this.txtDayAmount.TabIndex = 15;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // FrmPermissionList
             // 

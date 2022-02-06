@@ -24,5 +24,10 @@ namespace PersonnelTracking
         {
             e.Handled = Helper.IsNumber(e);
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Helper.ShowForm(this, new FrmPermission());
+        }
     }
 }

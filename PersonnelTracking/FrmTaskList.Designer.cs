@@ -33,9 +33,22 @@ namespace PersonnelTracking
             this.btnClose = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.panelBottom = new System.Windows.Forms.Panel();
+            this.btnApprove = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.panelTop = new System.Windows.Forms.Panel();
+            this.panelRight = new System.Windows.Forms.Panel();
+            this.cmbState = new System.Windows.Forms.ComboBox();
+            this.lblState = new System.Windows.Forms.Label();
+            this.groupBox = new System.Windows.Forms.GroupBox();
+            this.rbFinishDate = new System.Windows.Forms.RadioButton();
+            this.rbStartDate = new System.Windows.Forms.RadioButton();
+            this.dtbFinishDate = new System.Windows.Forms.DateTimePicker();
+            this.dtbStartDate = new System.Windows.Forms.DateTimePicker();
+            this.lblFinishDate = new System.Windows.Forms.Label();
+            this.lblStartDate = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.panelLeft = new System.Windows.Forms.Panel();
             this.cmbPosition = new System.Windows.Forms.ComboBox();
             this.lblPosition = new System.Windows.Forms.Label();
@@ -47,25 +60,12 @@ namespace PersonnelTracking
             this.lblSurname = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblUserNo = new System.Windows.Forms.Label();
-            this.panelRight = new System.Windows.Forms.Panel();
-            this.lblState = new System.Windows.Forms.Label();
-            this.groupBox = new System.Windows.Forms.GroupBox();
-            this.rbFinishDate = new System.Windows.Forms.RadioButton();
-            this.rbStartDate = new System.Windows.Forms.RadioButton();
-            this.dtbFinishDate = new System.Windows.Forms.DateTimePicker();
-            this.dtbStartDate = new System.Windows.Forms.DateTimePicker();
-            this.lblFinishDate = new System.Windows.Forms.Label();
-            this.lblStartDate = new System.Windows.Forms.Label();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.btnApprove = new System.Windows.Forms.Button();
-            this.cmbState = new System.Windows.Forms.ComboBox();
             this.panelBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.panelTop.SuspendLayout();
-            this.panelLeft.SuspendLayout();
             this.panelRight.SuspendLayout();
             this.groupBox.SuspendLayout();
+            this.panelLeft.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAdd
@@ -76,6 +76,7 @@ namespace PersonnelTracking
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnClose
             // 
@@ -109,6 +110,15 @@ namespace PersonnelTracking
             this.panelBottom.Size = new System.Drawing.Size(800, 49);
             this.panelBottom.TabIndex = 5;
             // 
+            // btnApprove
+            // 
+            this.btnApprove.Location = new System.Drawing.Point(21, 13);
+            this.btnApprove.Name = "btnApprove";
+            this.btnApprove.Size = new System.Drawing.Size(75, 23);
+            this.btnApprove.TabIndex = 4;
+            this.btnApprove.Text = "Approve";
+            this.btnApprove.UseVisualStyleBackColor = true;
+            // 
             // btnUpdate
             // 
             this.btnUpdate.Location = new System.Drawing.Point(183, 14);
@@ -136,6 +146,122 @@ namespace PersonnelTracking
             this.panelTop.Name = "panelTop";
             this.panelTop.Size = new System.Drawing.Size(800, 144);
             this.panelTop.TabIndex = 3;
+            // 
+            // panelRight
+            // 
+            this.panelRight.Controls.Add(this.cmbState);
+            this.panelRight.Controls.Add(this.lblState);
+            this.panelRight.Controls.Add(this.groupBox);
+            this.panelRight.Controls.Add(this.dtbFinishDate);
+            this.panelRight.Controls.Add(this.dtbStartDate);
+            this.panelRight.Controls.Add(this.lblFinishDate);
+            this.panelRight.Controls.Add(this.lblStartDate);
+            this.panelRight.Controls.Add(this.btnClear);
+            this.panelRight.Controls.Add(this.btnSearch);
+            this.panelRight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelRight.Location = new System.Drawing.Point(403, 0);
+            this.panelRight.Name = "panelRight";
+            this.panelRight.Size = new System.Drawing.Size(397, 144);
+            this.panelRight.TabIndex = 18;
+            // 
+            // cmbState
+            // 
+            this.cmbState.FormattingEnabled = true;
+            this.cmbState.Location = new System.Drawing.Point(75, 65);
+            this.cmbState.Name = "cmbState";
+            this.cmbState.Size = new System.Drawing.Size(121, 21);
+            this.cmbState.TabIndex = 24;
+            // 
+            // lblState
+            // 
+            this.lblState.AutoSize = true;
+            this.lblState.Location = new System.Drawing.Point(9, 68);
+            this.lblState.Name = "lblState";
+            this.lblState.Size = new System.Drawing.Size(32, 13);
+            this.lblState.TabIndex = 25;
+            this.lblState.Text = "State";
+            // 
+            // groupBox
+            // 
+            this.groupBox.Controls.Add(this.rbFinishDate);
+            this.groupBox.Controls.Add(this.rbStartDate);
+            this.groupBox.Location = new System.Drawing.Point(12, 88);
+            this.groupBox.Name = "groupBox";
+            this.groupBox.Size = new System.Drawing.Size(184, 41);
+            this.groupBox.TabIndex = 23;
+            this.groupBox.TabStop = false;
+            // 
+            // rbFinishDate
+            // 
+            this.rbFinishDate.AutoSize = true;
+            this.rbFinishDate.Location = new System.Drawing.Point(97, 19);
+            this.rbFinishDate.Name = "rbFinishDate";
+            this.rbFinishDate.Size = new System.Drawing.Size(78, 17);
+            this.rbFinishDate.TabIndex = 1;
+            this.rbFinishDate.TabStop = true;
+            this.rbFinishDate.Text = "Finish Date";
+            this.rbFinishDate.UseVisualStyleBackColor = true;
+            // 
+            // rbStartDate
+            // 
+            this.rbStartDate.AutoSize = true;
+            this.rbStartDate.Location = new System.Drawing.Point(6, 19);
+            this.rbStartDate.Name = "rbStartDate";
+            this.rbStartDate.Size = new System.Drawing.Size(73, 17);
+            this.rbStartDate.TabIndex = 0;
+            this.rbStartDate.TabStop = true;
+            this.rbStartDate.Text = "Start Date";
+            this.rbStartDate.UseVisualStyleBackColor = true;
+            // 
+            // dtbFinishDate
+            // 
+            this.dtbFinishDate.Location = new System.Drawing.Point(75, 41);
+            this.dtbFinishDate.Name = "dtbFinishDate";
+            this.dtbFinishDate.Size = new System.Drawing.Size(200, 20);
+            this.dtbFinishDate.TabIndex = 22;
+            // 
+            // dtbStartDate
+            // 
+            this.dtbStartDate.Location = new System.Drawing.Point(75, 16);
+            this.dtbStartDate.Name = "dtbStartDate";
+            this.dtbStartDate.Size = new System.Drawing.Size(200, 20);
+            this.dtbStartDate.TabIndex = 21;
+            // 
+            // lblFinishDate
+            // 
+            this.lblFinishDate.AutoSize = true;
+            this.lblFinishDate.Location = new System.Drawing.Point(9, 44);
+            this.lblFinishDate.Name = "lblFinishDate";
+            this.lblFinishDate.Size = new System.Drawing.Size(60, 13);
+            this.lblFinishDate.TabIndex = 20;
+            this.lblFinishDate.Text = "Finish Date";
+            // 
+            // lblStartDate
+            // 
+            this.lblStartDate.AutoSize = true;
+            this.lblStartDate.Location = new System.Drawing.Point(9, 18);
+            this.lblStartDate.Name = "lblStartDate";
+            this.lblStartDate.Size = new System.Drawing.Size(55, 13);
+            this.lblStartDate.TabIndex = 19;
+            this.lblStartDate.Text = "Start Date";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(313, 47);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 18;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(313, 18);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 17;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
             // 
             // panelLeft
             // 
@@ -238,131 +364,6 @@ namespace PersonnelTracking
             this.lblUserNo.TabIndex = 11;
             this.lblUserNo.Text = "User Number";
             // 
-            // panelRight
-            // 
-            this.panelRight.Controls.Add(this.cmbState);
-            this.panelRight.Controls.Add(this.lblState);
-            this.panelRight.Controls.Add(this.groupBox);
-            this.panelRight.Controls.Add(this.dtbFinishDate);
-            this.panelRight.Controls.Add(this.dtbStartDate);
-            this.panelRight.Controls.Add(this.lblFinishDate);
-            this.panelRight.Controls.Add(this.lblStartDate);
-            this.panelRight.Controls.Add(this.btnClear);
-            this.panelRight.Controls.Add(this.btnSearch);
-            this.panelRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelRight.Location = new System.Drawing.Point(403, 0);
-            this.panelRight.Name = "panelRight";
-            this.panelRight.Size = new System.Drawing.Size(397, 144);
-            this.panelRight.TabIndex = 18;
-            // 
-            // lblState
-            // 
-            this.lblState.AutoSize = true;
-            this.lblState.Location = new System.Drawing.Point(9, 68);
-            this.lblState.Name = "lblState";
-            this.lblState.Size = new System.Drawing.Size(32, 13);
-            this.lblState.TabIndex = 25;
-            this.lblState.Text = "State";
-            // 
-            // groupBox
-            // 
-            this.groupBox.Controls.Add(this.rbFinishDate);
-            this.groupBox.Controls.Add(this.rbStartDate);
-            this.groupBox.Location = new System.Drawing.Point(12, 88);
-            this.groupBox.Name = "groupBox";
-            this.groupBox.Size = new System.Drawing.Size(184, 41);
-            this.groupBox.TabIndex = 23;
-            this.groupBox.TabStop = false;
-            // 
-            // rbFinishDate
-            // 
-            this.rbFinishDate.AutoSize = true;
-            this.rbFinishDate.Location = new System.Drawing.Point(97, 19);
-            this.rbFinishDate.Name = "rbFinishDate";
-            this.rbFinishDate.Size = new System.Drawing.Size(78, 17);
-            this.rbFinishDate.TabIndex = 1;
-            this.rbFinishDate.TabStop = true;
-            this.rbFinishDate.Text = "Finish Date";
-            this.rbFinishDate.UseVisualStyleBackColor = true;
-            // 
-            // rbStartDate
-            // 
-            this.rbStartDate.AutoSize = true;
-            this.rbStartDate.Location = new System.Drawing.Point(6, 19);
-            this.rbStartDate.Name = "rbStartDate";
-            this.rbStartDate.Size = new System.Drawing.Size(73, 17);
-            this.rbStartDate.TabIndex = 0;
-            this.rbStartDate.TabStop = true;
-            this.rbStartDate.Text = "Start Date";
-            this.rbStartDate.UseVisualStyleBackColor = true;
-            // 
-            // dtbFinishDate
-            // 
-            this.dtbFinishDate.Location = new System.Drawing.Point(75, 41);
-            this.dtbFinishDate.Name = "dtbFinishDate";
-            this.dtbFinishDate.Size = new System.Drawing.Size(200, 20);
-            this.dtbFinishDate.TabIndex = 22;
-            // 
-            // dtbStartDate
-            // 
-            this.dtbStartDate.Location = new System.Drawing.Point(75, 16);
-            this.dtbStartDate.Name = "dtbStartDate";
-            this.dtbStartDate.Size = new System.Drawing.Size(200, 20);
-            this.dtbStartDate.TabIndex = 21;
-            // 
-            // lblFinishDate
-            // 
-            this.lblFinishDate.AutoSize = true;
-            this.lblFinishDate.Location = new System.Drawing.Point(9, 44);
-            this.lblFinishDate.Name = "lblFinishDate";
-            this.lblFinishDate.Size = new System.Drawing.Size(60, 13);
-            this.lblFinishDate.TabIndex = 20;
-            this.lblFinishDate.Text = "Finish Date";
-            // 
-            // lblStartDate
-            // 
-            this.lblStartDate.AutoSize = true;
-            this.lblStartDate.Location = new System.Drawing.Point(9, 18);
-            this.lblStartDate.Name = "lblStartDate";
-            this.lblStartDate.Size = new System.Drawing.Size(55, 13);
-            this.lblStartDate.TabIndex = 19;
-            this.lblStartDate.Text = "Start Date";
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(313, 47);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 23);
-            this.btnClear.TabIndex = 18;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(313, 18);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnSearch.TabIndex = 17;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            // 
-            // btnApprove
-            // 
-            this.btnApprove.Location = new System.Drawing.Point(21, 13);
-            this.btnApprove.Name = "btnApprove";
-            this.btnApprove.Size = new System.Drawing.Size(75, 23);
-            this.btnApprove.TabIndex = 4;
-            this.btnApprove.Text = "Approve";
-            this.btnApprove.UseVisualStyleBackColor = true;
-            // 
-            // cmbState
-            // 
-            this.cmbState.FormattingEnabled = true;
-            this.cmbState.Location = new System.Drawing.Point(75, 65);
-            this.cmbState.Name = "cmbState";
-            this.cmbState.Size = new System.Drawing.Size(121, 21);
-            this.cmbState.TabIndex = 24;
-            // 
             // FrmTaskList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -382,12 +383,12 @@ namespace PersonnelTracking
             this.panelBottom.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.panelTop.ResumeLayout(false);
-            this.panelLeft.ResumeLayout(false);
-            this.panelLeft.PerformLayout();
             this.panelRight.ResumeLayout(false);
             this.panelRight.PerformLayout();
             this.groupBox.ResumeLayout(false);
             this.groupBox.PerformLayout();
+            this.panelLeft.ResumeLayout(false);
+            this.panelLeft.PerformLayout();
             this.ResumeLayout(false);
 
         }

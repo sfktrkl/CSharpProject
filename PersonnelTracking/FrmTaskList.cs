@@ -24,5 +24,10 @@ namespace PersonnelTracking
         {
             panelLeft.Hide();
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Helper.ShowForm(this, new FrmTask());
+        }
     }
 }

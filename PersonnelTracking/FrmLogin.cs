@@ -18,5 +18,12 @@ namespace PersonnelTracking
         {
             Application.Exit();
         }
+
+        private void btnEnter_Click(object sender, System.EventArgs e)
+        {
+            FrmMain frm = new FrmMain();
+            this.Hide();
+            frm.ShowDialog();
+        }
     }
 }

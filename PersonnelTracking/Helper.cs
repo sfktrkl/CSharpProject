@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using System;
 
 namespace PersonnelTracking
 {
@@ -9,6 +10,13 @@ namespace PersonnelTracking
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
                 return true;
             return false;
+        }
+
+        public static void ShowForm(Form parent, Form form)
+        {
+            parent.Hide();
+            form.ShowDialog();
+            parent.Visible = true;
         }
     }
 }
