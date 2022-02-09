@@ -1,4 +1,6 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System;
 
 namespace DataAccessLayer.DataAccessObjects
 {
@@ -15,6 +17,11 @@ namespace DataAccessLayer.DataAccessObjects
             {
                 throw ex;
             }
+        }
+
+        public static List<Department> GetDepartments()
+        {
+            return db.Departments.ToList();
         }
     }
 }
