@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.DataAccessObjects;
+﻿using DataAccessLayer.DataTransferObjects;
+using DataAccessLayer.DataAccessObjects;
 using System.Collections.Generic;
 using DataAccessLayer;
 using System;
@@ -10,6 +11,11 @@ namespace BusinessLogicLayer
         public static void AddPosition(Position position)
         {
             PositionDAO.AddPosition(position);
+        }
+
+        public static List<PositionDTO> GetPositions()
+        {
+            return PositionDAO.GetPositions();
         }
     }
 }
