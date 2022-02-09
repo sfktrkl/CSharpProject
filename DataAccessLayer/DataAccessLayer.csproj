@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="DataAccessObjects\DepartmentDAO.cs" />
     <Compile Include="DataAccessObjects\EmployeeContext.cs" />
+    <Compile Include="DataAccessObjects\PositionDAO.cs" />
     <Compile Include="EmployeeDataClass.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
