@@ -30,12 +30,12 @@ namespace PersonnelTracking
         private void InitializeComponent()
         {
             this.panelTop = new System.Windows.Forms.Panel();
-            this.txtUserNo = new System.Windows.Forms.TextBox();
-            this.lblUserNo = new System.Windows.Forms.Label();
-            this.btnCheck = new System.Windows.Forms.Button();
+            this.chkIsAdmin = new System.Windows.Forms.CheckBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
-            this.chkIsAdmin = new System.Windows.Forms.CheckBox();
+            this.btnCheck = new System.Windows.Forms.Button();
+            this.txtUserNo = new System.Windows.Forms.TextBox();
+            this.lblUserNo = new System.Windows.Forms.Label();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.cmbPosition = new System.Windows.Forms.ComboBox();
@@ -75,31 +75,15 @@ namespace PersonnelTracking
             this.panelTop.Size = new System.Drawing.Size(522, 68);
             this.panelTop.TabIndex = 0;
             // 
-            // txtUserNo
+            // chkIsAdmin
             // 
-            this.txtUserNo.Location = new System.Drawing.Point(96, 12);
-            this.txtUserNo.Name = "txtUserNo";
-            this.txtUserNo.Size = new System.Drawing.Size(100, 20);
-            this.txtUserNo.TabIndex = 0;
-            this.txtUserNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUserNo_KeyPress);
-            // 
-            // lblUserNo
-            // 
-            this.lblUserNo.AutoSize = true;
-            this.lblUserNo.Location = new System.Drawing.Point(21, 15);
-            this.lblUserNo.Name = "lblUserNo";
-            this.lblUserNo.Size = new System.Drawing.Size(69, 13);
-            this.lblUserNo.TabIndex = 2;
-            this.lblUserNo.Text = "User Number";
-            // 
-            // btnCheck
-            // 
-            this.btnCheck.Location = new System.Drawing.Point(212, 10);
-            this.btnCheck.Name = "btnCheck";
-            this.btnCheck.Size = new System.Drawing.Size(75, 23);
-            this.btnCheck.TabIndex = 3;
-            this.btnCheck.Text = "Check";
-            this.btnCheck.UseVisualStyleBackColor = true;
+            this.chkIsAdmin.AutoSize = true;
+            this.chkIsAdmin.Location = new System.Drawing.Point(212, 39);
+            this.chkIsAdmin.Name = "chkIsAdmin";
+            this.chkIsAdmin.Size = new System.Drawing.Size(72, 17);
+            this.chkIsAdmin.TabIndex = 6;
+            this.chkIsAdmin.Text = "Is Admin?";
+            this.chkIsAdmin.UseVisualStyleBackColor = true;
             // 
             // txtPassword
             // 
@@ -117,15 +101,32 @@ namespace PersonnelTracking
             this.lblPassword.TabIndex = 5;
             this.lblPassword.Text = "Password";
             // 
-            // chkIsAdmin
+            // btnCheck
             // 
-            this.chkIsAdmin.AutoSize = true;
-            this.chkIsAdmin.Location = new System.Drawing.Point(212, 39);
-            this.chkIsAdmin.Name = "chkIsAdmin";
-            this.chkIsAdmin.Size = new System.Drawing.Size(72, 17);
-            this.chkIsAdmin.TabIndex = 6;
-            this.chkIsAdmin.Text = "Is Admin?";
-            this.chkIsAdmin.UseVisualStyleBackColor = true;
+            this.btnCheck.Location = new System.Drawing.Point(212, 10);
+            this.btnCheck.Name = "btnCheck";
+            this.btnCheck.Size = new System.Drawing.Size(75, 23);
+            this.btnCheck.TabIndex = 3;
+            this.btnCheck.Text = "Check";
+            this.btnCheck.UseVisualStyleBackColor = true;
+            this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
+            // 
+            // txtUserNo
+            // 
+            this.txtUserNo.Location = new System.Drawing.Point(96, 12);
+            this.txtUserNo.Name = "txtUserNo";
+            this.txtUserNo.Size = new System.Drawing.Size(100, 20);
+            this.txtUserNo.TabIndex = 0;
+            this.txtUserNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUserNo_KeyPress);
+            // 
+            // lblUserNo
+            // 
+            this.lblUserNo.AutoSize = true;
+            this.lblUserNo.Location = new System.Drawing.Point(21, 15);
+            this.lblUserNo.Name = "lblUserNo";
+            this.lblUserNo.Size = new System.Drawing.Size(69, 13);
+            this.lblUserNo.TabIndex = 2;
+            this.lblUserNo.Text = "User Number";
             // 
             // pictureBox
             // 
@@ -163,6 +164,7 @@ namespace PersonnelTracking
             this.cmbDepartment.Name = "cmbDepartment";
             this.cmbDepartment.Size = new System.Drawing.Size(121, 21);
             this.cmbDepartment.TabIndex = 5;
+            this.cmbDepartment.SelectionChangeCommitted += new System.EventHandler(this.cmbDepartment_SelectionChangeCommitted);
             // 
             // lblDepartment
             // 
@@ -229,6 +231,7 @@ namespace PersonnelTracking
             this.btnBrowse.TabIndex = 7;
             this.btnBrowse.Text = "Browse";
             this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
             // txtSalary
             // 
@@ -298,6 +301,7 @@ namespace PersonnelTracking
             this.btnSave.TabIndex = 8;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // FrmEmployee
             // 
@@ -332,6 +336,7 @@ namespace PersonnelTracking
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Employee";
+            this.Load += new System.EventHandler(this.FrmEmployee_Load);
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
