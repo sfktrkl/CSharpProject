@@ -20,6 +20,7 @@ namespace BusinessLogicLayer
             dto.Positions = PositionDAO.GetPositions();
             dto.Employees = EmployeeDAO.GetEmployees();
             dto.TaskStates = TaskDAO.GetTaskStates();
+            dto.Tasks = TaskDAO.GetTasks();
             return dto;
         }
     }

@@ -10,5 +10,6 @@ namespace DataAccessLayer.DataTransferObjects
         public List<Department> Departments { get; set; }
         public List<PositionDTO> Positions { get; set; }
         public List<TaskState> TaskStates { get; set; }
+        public List<TaskDetailDTO> Tasks { get; set; }
     }
 }
