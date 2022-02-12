@@ -30,18 +30,18 @@ namespace PersonnelTracking
         private void InitializeComponent()
         {
             this.panelRight = new System.Windows.Forms.Panel();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.panelTop = new System.Windows.Forms.Panel();
+            this.cmbPosition = new System.Windows.Forms.ComboBox();
+            this.lblDepartment = new System.Windows.Forms.Label();
+            this.lblPosition = new System.Windows.Forms.Label();
+            this.cmbDepartment = new System.Windows.Forms.ComboBox();
             this.txtSurname = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtUserNo = new System.Windows.Forms.TextBox();
             this.lblSurname = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblUserNo = new System.Windows.Forms.Label();
-            this.panelTop = new System.Windows.Forms.Panel();
-            this.cmbPosition = new System.Windows.Forms.ComboBox();
-            this.lblPosition = new System.Windows.Forms.Label();
-            this.cmbDepartment = new System.Windows.Forms.ComboBox();
-            this.lblDepartment = new System.Windows.Forms.Label();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
             this.cmbState = new System.Windows.Forms.ComboBox();
             this.lblState = new System.Windows.Forms.Label();
             this.txtExplanation = new System.Windows.Forms.TextBox();
@@ -51,8 +51,8 @@ namespace PersonnelTracking
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.panelRight.SuspendLayout();
-            this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            this.panelTop.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelRight
@@ -64,6 +64,65 @@ namespace PersonnelTracking
             this.panelRight.Name = "panelRight";
             this.panelRight.Size = new System.Drawing.Size(211, 220);
             this.panelRight.TabIndex = 0;
+            // 
+            // dataGridView
+            // 
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView.Location = new System.Drawing.Point(0, 77);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.Size = new System.Drawing.Size(211, 143);
+            this.dataGridView.TabIndex = 1;
+            this.dataGridView.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_RowEnter);
+            // 
+            // panelTop
+            // 
+            this.panelTop.Controls.Add(this.cmbPosition);
+            this.panelTop.Controls.Add(this.lblDepartment);
+            this.panelTop.Controls.Add(this.lblPosition);
+            this.panelTop.Controls.Add(this.cmbDepartment);
+            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTop.Location = new System.Drawing.Point(0, 0);
+            this.panelTop.Name = "panelTop";
+            this.panelTop.Size = new System.Drawing.Size(211, 77);
+            this.panelTop.TabIndex = 0;
+            // 
+            // cmbPosition
+            // 
+            this.cmbPosition.FormattingEnabled = true;
+            this.cmbPosition.Location = new System.Drawing.Point(82, 35);
+            this.cmbPosition.Name = "cmbPosition";
+            this.cmbPosition.Size = new System.Drawing.Size(121, 21);
+            this.cmbPosition.TabIndex = 23;
+            this.cmbPosition.SelectionChangeCommitted += new System.EventHandler(this.cmbPosition_SelectionChangeCommitted);
+            // 
+            // lblDepartment
+            // 
+            this.lblDepartment.AutoSize = true;
+            this.lblDepartment.Location = new System.Drawing.Point(14, 13);
+            this.lblDepartment.Name = "lblDepartment";
+            this.lblDepartment.Size = new System.Drawing.Size(62, 13);
+            this.lblDepartment.TabIndex = 24;
+            this.lblDepartment.Text = "Department";
+            // 
+            // lblPosition
+            // 
+            this.lblPosition.AutoSize = true;
+            this.lblPosition.Location = new System.Drawing.Point(14, 38);
+            this.lblPosition.Name = "lblPosition";
+            this.lblPosition.Size = new System.Drawing.Size(44, 13);
+            this.lblPosition.TabIndex = 25;
+            this.lblPosition.Text = "Position";
+            // 
+            // cmbDepartment
+            // 
+            this.cmbDepartment.FormattingEnabled = true;
+            this.cmbDepartment.Location = new System.Drawing.Point(82, 10);
+            this.cmbDepartment.Name = "cmbDepartment";
+            this.cmbDepartment.Size = new System.Drawing.Size(121, 21);
+            this.cmbDepartment.TabIndex = 22;
+            this.cmbDepartment.SelectionChangeCommitted += new System.EventHandler(this.cmbDepartment_SelectionChangeCommitted);
             // 
             // txtSurname
             // 
@@ -115,61 +174,6 @@ namespace PersonnelTracking
             this.lblUserNo.Size = new System.Drawing.Size(69, 13);
             this.lblUserNo.TabIndex = 17;
             this.lblUserNo.Text = "User Number";
-            // 
-            // panelTop
-            // 
-            this.panelTop.Controls.Add(this.cmbPosition);
-            this.panelTop.Controls.Add(this.lblDepartment);
-            this.panelTop.Controls.Add(this.lblPosition);
-            this.panelTop.Controls.Add(this.cmbDepartment);
-            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTop.Location = new System.Drawing.Point(0, 0);
-            this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(211, 77);
-            this.panelTop.TabIndex = 0;
-            // 
-            // cmbPosition
-            // 
-            this.cmbPosition.FormattingEnabled = true;
-            this.cmbPosition.Location = new System.Drawing.Point(82, 35);
-            this.cmbPosition.Name = "cmbPosition";
-            this.cmbPosition.Size = new System.Drawing.Size(121, 21);
-            this.cmbPosition.TabIndex = 23;
-            // 
-            // lblPosition
-            // 
-            this.lblPosition.AutoSize = true;
-            this.lblPosition.Location = new System.Drawing.Point(14, 38);
-            this.lblPosition.Name = "lblPosition";
-            this.lblPosition.Size = new System.Drawing.Size(44, 13);
-            this.lblPosition.TabIndex = 25;
-            this.lblPosition.Text = "Position";
-            // 
-            // cmbDepartment
-            // 
-            this.cmbDepartment.FormattingEnabled = true;
-            this.cmbDepartment.Location = new System.Drawing.Point(82, 10);
-            this.cmbDepartment.Name = "cmbDepartment";
-            this.cmbDepartment.Size = new System.Drawing.Size(121, 21);
-            this.cmbDepartment.TabIndex = 22;
-            // 
-            // lblDepartment
-            // 
-            this.lblDepartment.AutoSize = true;
-            this.lblDepartment.Location = new System.Drawing.Point(14, 13);
-            this.lblDepartment.Name = "lblDepartment";
-            this.lblDepartment.Size = new System.Drawing.Size(62, 13);
-            this.lblDepartment.TabIndex = 24;
-            this.lblDepartment.Text = "Department";
-            // 
-            // dataGridView
-            // 
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView.Location = new System.Drawing.Point(0, 77);
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(211, 143);
-            this.dataGridView.TabIndex = 1;
             // 
             // cmbState
             // 
@@ -239,6 +243,7 @@ namespace PersonnelTracking
             this.btnSave.TabIndex = 32;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // FrmTask
             // 
@@ -267,10 +272,11 @@ namespace PersonnelTracking
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Task";
+            this.Load += new System.EventHandler(this.FrmTask_Load);
             this.panelRight.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

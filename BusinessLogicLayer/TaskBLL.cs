@@ -1,0 +1,26 @@
+﻿using DataAccessLayer.DataTransferObjects;
+using DataAccessLayer.DataAccessObjects;
+using System.Collections.Generic;
+using DataAccessLayer;
+using System;
+
+namespace BusinessLogicLayer
+{
+    public class TaskBLL
+    {
+        public static void AddTask(Task task)
+        {
+            TaskDAO.AddTask(task);
+        }
+
+        public static TaskDTO GetAll()
+        {
+            TaskDTO dto = new TaskDTO();
+            dto.Departments = DepartmentDAO.GetDepartments();
+            dto.Positions = PositionDAO.GetPositions();
+            dto.Employees = EmployeeDAO.GetEmployees();
+            dto.TaskStates = TaskDAO.GetTaskStates();
+            return dto;
+        }
+    }
+}
