@@ -29,7 +29,7 @@ namespace PersonnelTracking
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblState = new System.Windows.Forms.Label();
+            this.lblDayAmount = new System.Windows.Forms.Label();
             this.groupBox = new System.Windows.Forms.GroupBox();
             this.rbFinishDate = new System.Windows.Forms.RadioButton();
             this.rbStartDate = new System.Windows.Forms.RadioButton();
@@ -61,6 +61,8 @@ namespace PersonnelTracking
             this.btnClose = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.cmbState = new System.Windows.Forms.ComboBox();
+            this.lblState = new System.Windows.Forms.Label();
             this.groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.panelTop.SuspendLayout();
@@ -69,14 +71,14 @@ namespace PersonnelTracking
             this.panelBottom.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lblState
+            // lblDayAmount
             // 
-            this.lblState.AutoSize = true;
-            this.lblState.Location = new System.Drawing.Point(9, 68);
-            this.lblState.Name = "lblState";
-            this.lblState.Size = new System.Drawing.Size(65, 13);
-            this.lblState.TabIndex = 25;
-            this.lblState.Text = "Day Amount";
+            this.lblDayAmount.AutoSize = true;
+            this.lblDayAmount.Location = new System.Drawing.Point(9, 68);
+            this.lblDayAmount.Name = "lblDayAmount";
+            this.lblDayAmount.Size = new System.Drawing.Size(65, 13);
+            this.lblDayAmount.TabIndex = 25;
+            this.lblDayAmount.Text = "Day Amount";
             // 
             // groupBox
             // 
@@ -159,6 +161,7 @@ namespace PersonnelTracking
             this.cmbDepartment.Name = "cmbDepartment";
             this.cmbDepartment.Size = new System.Drawing.Size(121, 21);
             this.cmbDepartment.TabIndex = 16;
+            this.cmbDepartment.SelectionChangeCommitted += new System.EventHandler(this.cmbDepartment_SelectionChangeCommitted);
             // 
             // lblDepartment
             // 
@@ -236,6 +239,7 @@ namespace PersonnelTracking
             // 
             // dataGridView
             // 
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView.Location = new System.Drawing.Point(0, 144);
@@ -255,8 +259,10 @@ namespace PersonnelTracking
             // 
             // panelRight
             // 
-            this.panelRight.Controls.Add(this.txtDayAmount);
+            this.panelRight.Controls.Add(this.cmbState);
             this.panelRight.Controls.Add(this.lblState);
+            this.panelRight.Controls.Add(this.txtDayAmount);
+            this.panelRight.Controls.Add(this.lblDayAmount);
             this.panelRight.Controls.Add(this.groupBox);
             this.panelRight.Controls.Add(this.dtbFinishDate);
             this.panelRight.Controls.Add(this.dtbStartDate);
@@ -285,6 +291,7 @@ namespace PersonnelTracking
             this.btnClear.TabIndex = 18;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnSearch
             // 
@@ -294,6 +301,7 @@ namespace PersonnelTracking
             this.btnSearch.TabIndex = 17;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // panelLeft
             // 
@@ -374,6 +382,23 @@ namespace PersonnelTracking
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // cmbState
+            // 
+            this.cmbState.FormattingEnabled = true;
+            this.cmbState.Location = new System.Drawing.Point(267, 88);
+            this.cmbState.Name = "cmbState";
+            this.cmbState.Size = new System.Drawing.Size(121, 21);
+            this.cmbState.TabIndex = 26;
+            // 
+            // lblState
+            // 
+            this.lblState.AutoSize = true;
+            this.lblState.Location = new System.Drawing.Point(199, 91);
+            this.lblState.Name = "lblState";
+            this.lblState.Size = new System.Drawing.Size(32, 13);
+            this.lblState.TabIndex = 27;
+            this.lblState.Text = "State";
+            // 
             // FrmPermissionList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -389,6 +414,7 @@ namespace PersonnelTracking
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Permission List";
+            this.Load += new System.EventHandler(this.FrmPermissionList_Load);
             this.groupBox.ResumeLayout(false);
             this.groupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
@@ -403,7 +429,7 @@ namespace PersonnelTracking
         }
 
         #endregion
-        private System.Windows.Forms.Label lblState;
+        private System.Windows.Forms.Label lblDayAmount;
         private System.Windows.Forms.GroupBox groupBox;
         private System.Windows.Forms.RadioButton rbFinishDate;
         private System.Windows.Forms.RadioButton rbStartDate;
@@ -435,5 +461,7 @@ namespace PersonnelTracking
         private System.Windows.Forms.TextBox txtDayAmount;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.ComboBox cmbState;
+        private System.Windows.Forms.Label lblState;
     }
 }

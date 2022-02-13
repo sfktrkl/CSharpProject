@@ -19,5 +19,40 @@ namespace DataAccessLayer.DataAccessObjects
                 throw ex;
             }
         }
+
+        public static List<PermissionState> GetStates()
+        {
+            return db.PermissionStates.ToList();
+        }
+
+        public static List<PermissionDetailDTO> GetPermissions()
+        {
+            try
+            {
+                return (from p in db.Permissions
+                        join s in db.PermissionStates on p.State equals s.ID
+                        join e in db.Employees on p.EmployeeID equals e.ID
+                        select new PermissionDetailDTO
+                        {
+                            UserNo = e.UserNo,
+                            Name = e.Name,
+                            Surname = e.Surname,
+                            StateName = s.Name,
+                            State = p.State,
+                            StartDate = p.StartDate,
+                            EndDate = p.EndDate,
+                            EmployeeID = p.EmployeeID,
+                            PermissionID = p.ID,
+                            Explanation = p.Explanation,
+                            PermissionDayAmount = p.Day,
+                            DepartmentID = e.DepartmentID,
+                            PositionID = e.PositionID
+                        }).OrderBy(x => x.StartDate).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
