@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System;
-using DataAccessLayer.DataTransferObjects;
 
 namespace DataAccessLayer.DataAccessObjects
 {
@@ -49,6 +48,26 @@ namespace DataAccessLayer.DataAccessObjects
                             ImagePath = e.ImagePath,
                             Birthday = e.Birthday,
                             Adress = e.Adress
+                        }).OrderBy(x => x.UserNo).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static List<EmployeeDetailDTO> GetEmployees(int userNo, string password)
+        {
+            try
+            {
+                return (from e in db.Employees
+                        where e.UserNo == userNo
+                        where e.Password == password
+                        select new EmployeeDetailDTO
+                        {
+                            UserNo = e.UserNo,
+                            EmployeeID = e.ID,
+                            IsAdmin = e.isAdmin,
                         }).OrderBy(x => x.UserNo).ToList();
             }
             catch (Exception ex)

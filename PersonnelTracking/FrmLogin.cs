@@ -1,4 +1,10 @@
-﻿using System.Windows.Forms;
+﻿using DataAccessLayer.DataTransferObjects;
+using System.Collections.Generic;
+using System.Windows.Forms;
+using BusinessLogicLayer;
+using DataAccessLayer;
+using System.Linq;
+using System;
 
 namespace PersonnelTracking
 {
@@ -21,9 +27,24 @@ namespace PersonnelTracking
 
         private void btnEnter_Click(object sender, System.EventArgs e)
         {
-            FrmMain frm = new FrmMain();
-            this.Hide();
-            frm.ShowDialog();
+            if (txtUserNo.Text.Trim() == "" || txtPassword.Text.Trim() == "")
+                MessageBox.Show("Please fill the information");
+            else
+            {
+                List<EmployeeDetailDTO> employees = EmployeeBLL.GetEmployees(Convert.ToInt32(txtUserNo.Text), txtPassword.Text);
+                if (employees.Count == 0)
+                    MessageBox.Show("Check your credentials");
+                else
+                {
+                    EmployeeDetailDTO employee = employees.First();
+                    User.EmployeeID = employee.EmployeeID;
+                    User.UserNo = employee.UserNo;
+                    User.IsAdmin = Convert.ToBoolean(employee.IsAdmin);
+                    FrmMain frm = new FrmMain();
+                    this.Hide();
+                    frm.ShowDialog();
+                }
+            }
         }
     }
 }

@@ -29,5 +29,10 @@ namespace BusinessLogicLayer
                 return false;
             return true;
         }
+
+        public static List<EmployeeDetailDTO> GetEmployees(int userNo, string password)
+        {
+            return EmployeeDAO.GetEmployees(userNo, password);
+        }
     }
 }
