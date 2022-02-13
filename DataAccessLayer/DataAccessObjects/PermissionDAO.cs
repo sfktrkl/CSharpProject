@@ -20,6 +20,37 @@ namespace DataAccessLayer.DataAccessObjects
             }
         }
 
+        public static void UpdatePermission(Permission permission)
+        {
+            try
+            {
+                Permission pr = db.Permissions.First(x => x.ID == permission.ID);
+                pr.StartDate = permission.StartDate;
+                pr.EndDate = permission.EndDate;
+                pr.Explanation = permission.Explanation;
+                pr.Day = permission.Day;
+                db.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void UpdatePermission(int permissionID, int permissionState)
+        {
+            try
+            {
+                Permission pr = db.Permissions.First(x => x.ID == permissionID);
+                pr.State = permissionState;
+                db.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static List<PermissionState> GetStates()
         {
             return db.PermissionStates.ToList();

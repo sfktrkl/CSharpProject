@@ -53,6 +53,7 @@
     <Compile Include="DataTransferObjects\EmployeeDTO.cs" />
     <Compile Include="DataTransferObjects\PermissionDetailDTO.cs" />
     <Compile Include="DataTransferObjects\PermissionDTO.cs" />
+    <Compile Include="DataTransferObjects\PermissionStates.cs" />
     <Compile Include="DataTransferObjects\PositionDTO.cs" />
     <Compile Include="DataTransferObjects\SalaryDetailDTO.cs" />
     <Compile Include="DataTransferObjects\SalaryDTO.cs" />

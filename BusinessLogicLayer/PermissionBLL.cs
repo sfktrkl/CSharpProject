@@ -13,6 +13,17 @@ namespace BusinessLogicLayer
             PermissionDAO.AddPermission(permission);
         }
 
+        public static void UpdatePermission(Permission permission)
+        {
+            PermissionDAO.UpdatePermission(permission);
+        }
+
+
+        public static void UpdatePermission(int permissionID, int permissionState)
+        {
+            PermissionDAO.UpdatePermission(permissionID, permissionState);
+        }
+
         public static PermissionDTO GetAll()
         {
             PermissionDTO dto = new PermissionDTO();

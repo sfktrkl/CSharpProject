@@ -209,6 +209,7 @@ namespace PersonnelTracking
             this.btnApprove.TabIndex = 4;
             this.btnApprove.Text = "Approve";
             this.btnApprove.UseVisualStyleBackColor = true;
+            this.btnApprove.Click += new System.EventHandler(this.btnApprove_Click);
             // 
             // lblSurname
             // 
@@ -246,6 +247,7 @@ namespace PersonnelTracking
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.Size = new System.Drawing.Size(800, 338);
             this.dataGridView.TabIndex = 7;
+            this.dataGridView.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_RowEnter);
             // 
             // panelTop
             // 
@@ -329,6 +331,7 @@ namespace PersonnelTracking
             this.btnUpdate.TabIndex = 1;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // panelBottom
             // 
@@ -352,6 +355,7 @@ namespace PersonnelTracking
             this.btnDisapprove.TabIndex = 5;
             this.btnDisapprove.Text = "Disapprove";
             this.btnDisapprove.UseVisualStyleBackColor = true;
+            this.btnDisapprove.Click += new System.EventHandler(this.btnDisapprove_Click);
             // 
             // btnClose
             // 
