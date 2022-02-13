@@ -66,6 +66,7 @@ namespace PersonnelTracking
             this.dtbFinishDate.Name = "dtbFinishDate";
             this.dtbFinishDate.Size = new System.Drawing.Size(200, 20);
             this.dtbFinishDate.TabIndex = 26;
+            this.dtbFinishDate.ValueChanged += new System.EventHandler(this.dtbFinishDate_ValueChanged);
             // 
             // dtbStartDate
             // 
@@ -73,6 +74,7 @@ namespace PersonnelTracking
             this.dtbStartDate.Name = "dtbStartDate";
             this.dtbStartDate.Size = new System.Drawing.Size(200, 20);
             this.dtbStartDate.TabIndex = 25;
+            this.dtbStartDate.ValueChanged += new System.EventHandler(this.dtbStartDate_ValueChanged);
             // 
             // lblFinishDate
             // 
@@ -144,6 +146,7 @@ namespace PersonnelTracking
             this.btnSave.TabIndex = 34;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // FrmPermission
             // 
@@ -169,6 +172,7 @@ namespace PersonnelTracking
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Permission";
+            this.Load += new System.EventHandler(this.FrmPermission_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

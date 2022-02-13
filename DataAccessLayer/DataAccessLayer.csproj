@@ -45,6 +45,7 @@
     <Compile Include="DataAccessObjects\DepartmentDAO.cs" />
     <Compile Include="DataAccessObjects\EmployeeContext.cs" />
     <Compile Include="DataAccessObjects\EmployeeDAO.cs" />
+    <Compile Include="DataAccessObjects\PermissionDAO.cs" />
     <Compile Include="DataAccessObjects\PositionDAO.cs" />
     <Compile Include="DataAccessObjects\SalaryDAO.cs" />
     <Compile Include="DataAccessObjects\TaskDAO.cs" />
