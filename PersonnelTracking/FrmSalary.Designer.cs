@@ -63,6 +63,7 @@ namespace PersonnelTracking
             this.btnSave.TabIndex = 47;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txtYear
             // 
@@ -106,6 +107,7 @@ namespace PersonnelTracking
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.Size = new System.Drawing.Size(211, 120);
             this.dataGridView.TabIndex = 1;
+            this.dataGridView.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_RowEnter);
             // 
             // cmbPosition
             // 
@@ -114,6 +116,7 @@ namespace PersonnelTracking
             this.cmbPosition.Name = "cmbPosition";
             this.cmbPosition.Size = new System.Drawing.Size(121, 21);
             this.cmbPosition.TabIndex = 23;
+            this.cmbPosition.SelectionChangeCommitted += new System.EventHandler(this.cmbPosition_SelectionChangeCommitted);
             // 
             // lblDepartment
             // 
@@ -140,6 +143,7 @@ namespace PersonnelTracking
             this.cmbDepartment.Name = "cmbDepartment";
             this.cmbDepartment.Size = new System.Drawing.Size(121, 21);
             this.cmbDepartment.TabIndex = 22;
+            this.cmbDepartment.SelectionChangeCommitted += new System.EventHandler(this.cmbDepartment_SelectionChangeCommitted);
             // 
             // panelTop
             // 
@@ -266,6 +270,7 @@ namespace PersonnelTracking
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Salary";
+            this.Load += new System.EventHandler(this.FrmSalary_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();

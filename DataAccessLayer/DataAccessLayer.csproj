@@ -46,10 +46,12 @@
     <Compile Include="DataAccessObjects\EmployeeContext.cs" />
     <Compile Include="DataAccessObjects\EmployeeDAO.cs" />
     <Compile Include="DataAccessObjects\PositionDAO.cs" />
+    <Compile Include="DataAccessObjects\SalaryDAO.cs" />
     <Compile Include="DataAccessObjects\TaskDAO.cs" />
     <Compile Include="DataTransferObjects\EmployeeDetailDTO.cs" />
     <Compile Include="DataTransferObjects\EmployeeDTO.cs" />
     <Compile Include="DataTransferObjects\PositionDTO.cs" />
+    <Compile Include="DataTransferObjects\SalaryDTO.cs" />
     <Compile Include="DataTransferObjects\TaskDetailDTO.cs" />
     <Compile Include="DataTransferObjects\TaskDTO.cs" />
     <Compile Include="EmployeeDataClass.designer.cs">
