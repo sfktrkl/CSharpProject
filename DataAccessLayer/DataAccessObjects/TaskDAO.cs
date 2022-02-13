@@ -20,6 +20,23 @@ namespace DataAccessLayer.DataAccessObjects
             }
         }
 
+        public static void UpdateTask(Task task)
+        {
+            try
+            {
+                Task ts = db.Tasks.First(x => x.ID == task.ID);
+                ts.Title = task.Title;
+                ts.Explanation = task.Explanation;
+                ts.State = task.State;
+                ts.EmployeeID = task.EmployeeID;
+                db.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static List<TaskState> GetTaskStates()
         {
             return db.TaskStates.ToList();

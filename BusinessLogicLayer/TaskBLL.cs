@@ -13,6 +13,11 @@ namespace BusinessLogicLayer
             TaskDAO.AddTask(task);
         }
 
+        public static void UpdateTask(Task task)
+        {
+            TaskDAO.UpdateTask(task);
+        }
+
         public static TaskDTO GetAll()
         {
             TaskDTO dto = new TaskDTO();

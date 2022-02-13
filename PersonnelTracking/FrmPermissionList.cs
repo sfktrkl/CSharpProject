@@ -153,9 +153,11 @@ namespace PersonnelTracking
                 MessageBox.Show("please select a permission from table");
             else
             {
-                FrmPermission frm = new FrmPermission();
-                frm.isUpdate = true;
-                frm.detail = detail;
+                FrmPermission frm = new FrmPermission
+                {
+                    isUpdate = true,
+                    detail = detail
+                };
                 this.Hide();
                 frm.ShowDialog();
                 this.Visible = true;

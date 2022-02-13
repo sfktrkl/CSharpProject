@@ -10,6 +10,9 @@ namespace PersonnelTracking
 {
     public partial class FrmTask : Form
     {
+        public bool isUpdate;
+        public TaskDetailDTO detail;
+
         private TaskDTO dto = new TaskDTO();
 
         public FrmTask()
@@ -58,6 +61,24 @@ namespace PersonnelTracking
             cmbPosition.DisplayMember = "Name";
             cmbPosition.ValueMember = "ID";
             cmbPosition.SelectedIndex = -1;
+
+            if (isUpdate)
+            {
+                panelRight.Hide();
+                lblState.Visible = true;
+                cmbState.Visible = true;
+
+                txtName.Text = detail.Name;
+                txtUserNo.Text = detail.UserNo.ToString();
+                txtSurname.Text = detail.Surname;
+                txtTitle.Text = detail.Title;
+                txtExplanation.Text = detail.Explanation;
+
+                cmbState.DataSource = dto.TaskStates;
+                cmbState.DisplayMember = "Name";
+                cmbState.ValueMember = "ID";
+                cmbState.SelectedValue = detail.StateID;
+            }
         }
 
         private void cmbDepartment_SelectionChangeCommitted(object sender, EventArgs e)
@@ -82,7 +103,7 @@ namespace PersonnelTracking
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (dataGridView.SelectedRows.Count == 0)
+            if (!isUpdate && dataGridView.SelectedRows.Count == 0)
                 MessageBox.Show("Please select an employee on table");
             else if (txtTitle.Text.Trim() == "")
                 MessageBox.Show("Task Title is empty");
@@ -92,17 +113,37 @@ namespace PersonnelTracking
             }
             else
             {
-                TaskBLL.AddTask(new Task
+                if (!isUpdate)
                 {
-                    EmployeeID = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value),
-                    State = 1,
-                    Title = txtTitle.Text,
-                    StartDate = DateTime.Today,
-                    Explanation = txtExplanation.Text,
-                });
-                MessageBox.Show("Task was added");
-                txtTitle.Clear();
-                txtExplanation.Clear();
+                    TaskBLL.AddTask(new Task
+                    {
+                        EmployeeID = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value),
+                        State = 1,
+                        Title = txtTitle.Text,
+                        StartDate = DateTime.Today,
+                        Explanation = txtExplanation.Text,
+                    });
+                    MessageBox.Show("Task was added");
+                    txtTitle.Clear();
+                    txtExplanation.Clear();
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show("Are you sure", "Warning", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        TaskBLL.UpdateTask(new Task
+                        {
+                            ID = detail.TaskID,
+                            EmployeeID = detail.EmployeeID,
+                            Title = txtTitle.Text,
+                            Explanation = txtExplanation.Text,
+                            State = Convert.ToInt32(cmbState.SelectedValue)
+                        });
+                        MessageBox.Show("Task was updated");
+                        this.Close();
+                    }
+                }
             }
         }
     }

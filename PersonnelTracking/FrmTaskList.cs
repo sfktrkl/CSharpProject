@@ -10,6 +10,7 @@ namespace PersonnelTracking
     public partial class FrmTaskList : Form
     {
         private TaskDTO dto = new TaskDTO();
+        private TaskDetailDTO detail = new TaskDetailDTO();
 
         public FrmTaskList()
         {
@@ -127,6 +128,39 @@ namespace PersonnelTracking
         private void btnClear_Click(object sender, EventArgs e)
         {
             CleanFilter();
+        }
+
+        private void dataGridView_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            detail.Title = dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+            detail.UserNo = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[1].Value);
+            detail.Name = dataGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
+            detail.Surname = dataGridView.Rows[e.RowIndex].Cells[3].Value.ToString();
+            detail.StartDate = Convert.ToDateTime(dataGridView.Rows[e.RowIndex].Cells[4].Value);
+            detail.DeliveryDate = Convert.ToDateTime(dataGridView.Rows[e.RowIndex].Cells[5].Value);
+            detail.StateID = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[11].Value);
+            detail.TaskID = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[12].Value);
+            detail.EmployeeID = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[13].Value);
+            detail.Explanation = dataGridView.Rows[e.RowIndex].Cells[14].Value.ToString();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (detail.TaskID == 0)
+                MessageBox.Show("Please select a task on table");
+            else
+            {
+                FrmTask frm = new FrmTask
+                {
+                    isUpdate = true,
+                    detail = detail
+                };
+                this.Hide();
+                frm.ShowDialog();
+                this.Visible = true;
+                UpdateTasks();
+                CleanFilter();
+            }
         }
     }
 }
