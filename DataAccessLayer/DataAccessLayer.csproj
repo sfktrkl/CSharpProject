@@ -51,6 +51,7 @@
     <Compile Include="DataTransferObjects\EmployeeDetailDTO.cs" />
     <Compile Include="DataTransferObjects\EmployeeDTO.cs" />
     <Compile Include="DataTransferObjects\PositionDTO.cs" />
+    <Compile Include="DataTransferObjects\SalaryDetailDTO.cs" />
     <Compile Include="DataTransferObjects\SalaryDTO.cs" />
     <Compile Include="DataTransferObjects\TaskDetailDTO.cs" />
     <Compile Include="DataTransferObjects\TaskDTO.cs" />
