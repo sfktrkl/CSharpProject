@@ -20,6 +20,30 @@ namespace DataAccessLayer.DataAccessObjects
             }
         }
 
+        public static void UpdateEmployee(Employee employee)
+        {
+            try
+            {
+                Employee emp = db.Employees.First(x => x.ID == employee.ID);
+                emp.UserNo = employee.UserNo;
+                emp.Name = employee.Name;
+                emp.Surname = employee.Surname;
+                emp.Password = employee.Password;
+                emp.isAdmin = employee.isAdmin;
+                emp.Birthday = employee.Birthday;
+                emp.Adress = employee.Adress;
+                emp.DepartmentID = employee.DepartmentID;
+                emp.PositionID = employee.PositionID;
+                emp.Salary = employee.Salary;
+                emp.ImagePath = employee.ImagePath;
+                db.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static void UpdateEmployee(int employeeID, int amount)
         {
             try

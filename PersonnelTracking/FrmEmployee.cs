@@ -10,6 +10,9 @@ namespace PersonnelTracking
 {
     public partial class FrmEmployee : Form
     {
+        public bool isUpdate;
+        public EmployeeDetailDTO detail;
+
         private EmployeeDTO dto = new EmployeeDTO();
         private string filename = "";
 
@@ -51,6 +54,23 @@ namespace PersonnelTracking
             cmbPosition.DisplayMember = "Name";
             cmbPosition.ValueMember = "ID";
             cmbPosition.SelectedIndex = -1;
+
+            if (isUpdate)
+            {
+                txtName.Text = detail.Name;
+                txtSurname.Text = detail.Surname;
+                txtUserNo.Text = detail.UserNo.ToString();
+                txtPassword.Text = detail.Password;
+                chkIsAdmin.Checked = Convert.ToBoolean(detail.IsAdmin);
+                txtAddress.Text = detail.Adress;
+                dateTimePicker.Value = Convert.ToDateTime(detail.Birthday);
+                cmbDepartment.SelectedValue = detail.DepartmentID;
+                cmbPosition.SelectedValue = detail.PositionID;
+                txtSalary.Text = detail.Salary.ToString();
+                filename = Application.StartupPath + "\\images\\" + detail.ImagePath;
+                txtImagePath.Text = filename;
+                pictureBox.ImageLocation = filename;
+            }
         }
 
         private void cmbDepartment_SelectionChangeCommitted(object sender, EventArgs e)
@@ -74,7 +94,7 @@ namespace PersonnelTracking
         {
             if (txtUserNo.Text.Trim() == "")
                 MessageBox.Show("UserNo is Empty");
-            else if (!EmployeeBLL.isUnique(Convert.ToInt32(txtUserNo.Text)))
+            else if (!isUpdate && !EmployeeBLL.isUnique(Convert.ToInt32(txtUserNo.Text)))
                 MessageBox.Show("UserNo is already used");
             else if (txtPassword.Text.Trim() == "")
                 MessageBox.Show("Password is Empty");
@@ -90,38 +110,73 @@ namespace PersonnelTracking
                 MessageBox.Show("Select a position");
             else
             {
-                EmployeeBLL.AddEmployee(new Employee
+                if (!isUpdate)
                 {
-                    UserNo = Convert.ToInt32(txtUserNo.Text),
-                    Password = txtPassword.Text,
-                    isAdmin = chkIsAdmin.Checked,
-                    Name = txtName.Text,
-                    Surname = txtSurname.Text,
-                    Salary = Convert.ToInt32(txtSalary.Text),
-                    DepartmentID = Convert.ToInt32(cmbDepartment.SelectedValue),
-                    PositionID = Convert.ToInt32(cmbPosition.SelectedValue),
-                    Adress = txtAddress.Text,
-                    Birthday = dateTimePicker.Value,
-                    ImagePath = filename
-                });
-                File.Copy(txtImagePath.Text, @"images\\" + filename);
-                MessageBox.Show("Employee was added");
-                txtUserNo.Clear();
-                txtPassword.Clear();
-                chkIsAdmin.Checked = false;
-                txtName.Clear();
-                txtSurname.Clear();
-                txtSalary.Clear();
-                txtAddress.Clear();
-                txtImagePath.Clear();
-                pictureBox.Image = null;
-                dateTimePicker.Value = DateTime.Today;
+                    EmployeeBLL.AddEmployee(new Employee
+                    {
+                        UserNo = Convert.ToInt32(txtUserNo.Text),
+                        Password = txtPassword.Text,
+                        isAdmin = chkIsAdmin.Checked,
+                        Name = txtName.Text,
+                        Surname = txtSurname.Text,
+                        Salary = Convert.ToInt32(txtSalary.Text),
+                        DepartmentID = Convert.ToInt32(cmbDepartment.SelectedValue),
+                        PositionID = Convert.ToInt32(cmbPosition.SelectedValue),
+                        Adress = txtAddress.Text,
+                        Birthday = dateTimePicker.Value,
+                        ImagePath = filename
+                    });
+                    File.Copy(txtImagePath.Text, @"images\\" + filename);
+                    MessageBox.Show("Employee was added");
+                    txtUserNo.Clear();
+                    txtPassword.Clear();
+                    chkIsAdmin.Checked = false;
+                    txtName.Clear();
+                    txtSurname.Clear();
+                    txtSalary.Clear();
+                    txtAddress.Clear();
+                    txtImagePath.Clear();
+                    pictureBox.Image = null;
+                    dateTimePicker.Value = DateTime.Today;
 
-                cmbDepartment.DataSource = dto.Departments;
-                cmbDepartment.SelectedIndex = -1;
+                    cmbDepartment.DataSource = dto.Departments;
+                    cmbDepartment.SelectedIndex = -1;
 
-                cmbPosition.DataSource = dto.Positions;
-                cmbPosition.SelectedIndex = -1;
+                    cmbPosition.DataSource = dto.Positions;
+                    cmbPosition.SelectedIndex = -1;
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show("are you sure?", "Warning", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        Employee employee = new Employee
+                        {
+                            ID = detail.EmployeeID,
+                            UserNo = Convert.ToInt32(txtUserNo.Text),
+                            Name = txtName.Text,
+                            Surname = txtSurname.Text,
+                            isAdmin = chkIsAdmin.Checked,
+                            Password = txtPassword.Text,
+                            Adress = txtAddress.Text,
+                            Birthday = dateTimePicker.Value,
+                            DepartmentID = Convert.ToInt32(cmbDepartment.SelectedValue),
+                            PositionID = Convert.ToInt32(cmbPosition.SelectedValue),
+                            Salary = Convert.ToInt32(txtSalary.Text),
+                            ImagePath = detail.ImagePath
+                        };
+                        if (txtImagePath.Text != filename)
+                        {
+                            if (File.Exists(@"images\\" + detail.ImagePath))
+                                File.Delete(@"images\\" + detail.ImagePath);
+                            File.Copy(txtImagePath.Text, @"images\\" + filename);
+                            employee.ImagePath = filename;
+                        }
+                        EmployeeBLL.UpdateEmployee(employee);
+                        MessageBox.Show("Employee was updated");
+                        this.Close();
+                    }
+                }
             }
         }
 

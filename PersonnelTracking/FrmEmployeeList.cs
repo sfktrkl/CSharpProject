@@ -10,6 +10,7 @@ namespace PersonnelTracking
     public partial class FrmEmployeeList : Form
     {
         private EmployeeDTO dto = new EmployeeDTO();
+        private EmployeeDetailDTO detail = new EmployeeDetailDTO();
 
         public FrmEmployeeList()
         {
@@ -102,6 +103,39 @@ namespace PersonnelTracking
         private void btnClear_Click(object sender, EventArgs e)
         {
             CleanFilter();
+        }
+
+        private void dataGridView_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            detail.EmployeeID = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[0].Value);
+            detail.UserNo = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[1].Value);
+            detail.Name = dataGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
+            detail.Surname = dataGridView.Rows[e.RowIndex].Cells[3].Value.ToString();
+            detail.DepartmentID = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[6].Value);
+            detail.PositionID = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[7].Value);
+            detail.Salary = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[8].Value);
+            detail.IsAdmin = Convert.ToBoolean(dataGridView.Rows[e.RowIndex].Cells[9].Value);
+            detail.Password = dataGridView.Rows[e.RowIndex].Cells[10].Value.ToString();
+            detail.ImagePath = dataGridView.Rows[e.RowIndex].Cells[11].Value.ToString();
+            detail.Adress = dataGridView.Rows[e.RowIndex].Cells[12].Value.ToString();
+            detail.Birthday = Convert.ToDateTime(dataGridView.Rows[e.RowIndex].Cells[13].Value);
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (detail.EmployeeID == 0)
+                MessageBox.Show("Please select an employee on table");
+            else
+            {
+                FrmEmployee frm = new FrmEmployee();
+                frm.isUpdate = true;
+                frm.detail = detail;
+                this.Hide();
+                frm.ShowDialog();
+                this.Visible = true;
+                UpdateEmployees();
+                CleanFilter();
+            }
         }
     }
 }
