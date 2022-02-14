@@ -20,6 +20,20 @@ namespace DataAccessLayer.DataAccessObjects
             }
         }
 
+        public static void UpdateEmployee(int employeeID, int amount)
+        {
+            try
+            {
+                Employee employee = db.Employees.First(x => x.ID == employeeID);
+                employee.Salary = amount;
+                db.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static List<Employee> GetUsers(int userNo)
         {
             return db.Employees.Where(x => x.UserNo == userNo).ToList();

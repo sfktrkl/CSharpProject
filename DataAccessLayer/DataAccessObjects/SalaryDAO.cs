@@ -20,6 +20,22 @@ namespace DataAccessLayer.DataAccessObjects
             }
         }
 
+        public static void UpdateSalary(Salary salary)
+        {
+            try
+            {
+                Salary sl = db.Salaries.First(x => x.ID == salary.ID);
+                sl.Amount = salary.Amount;
+                sl.Year = salary.Year;
+                sl.MonthID = salary.MonthID;
+                db.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static List<Month> GetMonths()
         {
             return db.Months.ToList();

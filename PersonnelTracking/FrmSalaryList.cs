@@ -10,6 +10,7 @@ namespace PersonnelTracking
     public partial class FrmSalaryList : Form
     {
         private SalaryDTO dto = new SalaryDTO();
+        private SalaryDetailDTO detail = new SalaryDetailDTO();
 
         public FrmSalaryList()
         {
@@ -125,6 +126,35 @@ namespace PersonnelTracking
         private void btnClear_Click(object sender, EventArgs e)
         {
             CleanFilter();
+        }
+
+        private void dataGridView_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            detail.EmployeeID = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[0].Value);
+            detail.UserNo = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[1].Value);
+            detail.Name = dataGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
+            detail.Surname = dataGridView.Rows[e.RowIndex].Cells[3].Value.ToString();
+            detail.SalaryYear = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[9].Value);
+            detail.MonthID = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[10].Value);
+            detail.SalaryAmount = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[11].Value);
+            detail.SalaryID = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[12].Value);
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (detail.SalaryID == 0)
+                MessageBox.Show("Please select a salary from table");
+            else
+            {
+                FrmSalary frm = new FrmSalary();
+                frm.isUpdate = true;
+                frm.detail = detail;
+                this.Hide();
+                frm.ShowDialog();
+                this.Visible = true;
+                UpdateSalaries();
+                CleanFilter();
+            }
         }
     }
 }

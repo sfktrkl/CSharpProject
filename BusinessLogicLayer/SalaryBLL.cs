@@ -11,6 +11,13 @@ namespace BusinessLogicLayer
         public static void AddSalary(Salary salary)
         {
             SalaryDAO.AddTask(salary);
+            EmployeeDAO.UpdateEmployee(salary.EmployeeID, salary.Amount);
+        }
+
+        public static void UpdateSalary(Salary salary)
+        {
+            SalaryDAO.UpdateSalary(salary);
+            EmployeeDAO.UpdateEmployee(salary.EmployeeID, salary.Amount);
         }
 
         public static SalaryDTO GetAll()
