@@ -1,13 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using DataAccessLayer.DataTransferObjects;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using BusinessLogicLayer;
 using DataAccessLayer;
+using System.Linq;
 using System;
 
 namespace PersonnelTracking
 {
     public partial class FrmPosition : Form
     {
+        public bool isUpdate;
+        public PositionDTO detail;
+
         private List<Department> departments = new List<Department>();
 
         public FrmPosition()
@@ -32,6 +37,12 @@ namespace PersonnelTracking
             cmbDepartment.DisplayMember = "Name";
             cmbDepartment.ValueMember = "ID";
             cmbDepartment.SelectedIndex = -1;
+
+            if (isUpdate)
+            {
+                txtPosition.Text = detail.Name;
+                cmbDepartment.SelectedValue = detail.DepartmentID;
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -42,14 +53,29 @@ namespace PersonnelTracking
                 MessageBox.Show("Please select the department");
             else
             {
-                PositionBLL.AddPosition(new Position
+                if (!isUpdate)
                 {
-                    Name = txtPosition.Text,
-                    DepartmentID = Convert.ToInt32(cmbDepartment.SelectedValue)
-                });
-                MessageBox.Show("Position has been added successfully.");
-                txtPosition.Text = "";
-                cmbDepartment.SelectedIndex = -1;
+                    PositionBLL.AddPosition(new Position
+                    {
+                        Name = txtPosition.Text,
+                        DepartmentID = Convert.ToInt32(cmbDepartment.SelectedValue)
+                    });
+                    MessageBox.Show("Position has been added successfully.");
+                    txtPosition.Text = "";
+                    cmbDepartment.SelectedIndex = -1;
+                }
+                else
+                {
+                    Position position = new Position
+                    {
+                        ID = detail.ID,
+                        Name = txtPosition.Text,
+                        DepartmentID = Convert.ToInt32(cmbDepartment.SelectedValue)
+                    };
+                    PositionBLL.UpdatePosition(position);
+                    MessageBox.Show("Position was Updated");
+                    this.Close();
+                }
             }
         }
     }

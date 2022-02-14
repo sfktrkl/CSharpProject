@@ -20,6 +20,21 @@ namespace DataAccessLayer.DataAccessObjects
             }
         }
 
+        public static void UpdatePosition(Position position)
+        {
+            try
+            {
+                Position pst = db.Positions.First(x => x.ID == position.ID);
+                pst.Name = position.Name;
+                pst.DepartmentID = position.DepartmentID;
+                db.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static List<PositionDTO> GetPositions()
         {
             try

@@ -58,6 +58,21 @@ namespace DataAccessLayer.DataAccessObjects
             }
         }
 
+        public static void UpdateEmployee(Position position)
+        {
+            try
+            {
+                List<Employee> list = db.Employees.Where(x => x.PositionID == position.ID).ToList();
+                foreach (var item in list)
+                    item.DepartmentID = position.DepartmentID;
+                db.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static List<Employee> GetUsers(int userNo)
         {
             return db.Employees.Where(x => x.UserNo == userNo).ToList();

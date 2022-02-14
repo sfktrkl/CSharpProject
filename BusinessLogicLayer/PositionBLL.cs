@@ -13,6 +13,12 @@ namespace BusinessLogicLayer
             PositionDAO.AddPosition(position);
         }
 
+        public static void UpdatePosition(Position position)
+        {
+            PositionDAO.UpdatePosition(position);
+            EmployeeDAO.UpdateEmployee(position);
+        }
+
         public static List<PositionDTO> GetPositions()
         {
             return PositionDAO.GetPositions();
