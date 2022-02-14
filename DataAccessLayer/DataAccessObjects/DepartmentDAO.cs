@@ -19,6 +19,20 @@ namespace DataAccessLayer.DataAccessObjects
             }
         }
 
+        public static void UpdateDepartment(Department department)
+        {
+            try
+            {
+                Department dpt = db.Departments.First(x => x.ID == department.ID);
+                dpt.Name = department.Name;
+                db.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static List<Department> GetDepartments()
         {
             return db.Departments.ToList();

@@ -12,6 +12,11 @@ namespace BusinessLogicLayer
             DepartmentDAO.AddDepartment(department);
         }
 
+        public static void UpdateDepartment(Department department)
+        {
+            DepartmentDAO.UpdateDepartment(department);
+        }
+
         public static List<Department> GetDepartments()
         {
             return DepartmentDAO.GetDepartments();

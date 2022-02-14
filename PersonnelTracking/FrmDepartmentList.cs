@@ -8,6 +8,8 @@ namespace PersonnelTracking
 {
     public partial class FrmDepartmentList : Form
     {
+        private Department detail = new Department();
+
         private List<Department> departments = new List<Department>();
 
         public FrmDepartmentList()
@@ -37,6 +39,28 @@ namespace PersonnelTracking
             UpdateDepartments();
             dataGridView.Columns[0].Visible = false;
             dataGridView.Columns[1].HeaderText = "Department Name";
+        }
+
+        private void dataGridView_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            detail.ID = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[0].Value);
+            detail.Name = dataGridView.Rows[e.RowIndex].Cells[1].Value.ToString();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (detail.ID == 0)
+                MessageBox.Show("Please select a department from table");
+            else
+            {
+                FrmDepartment frm = new FrmDepartment();
+                frm.isUpdate = true;
+                frm.detail = detail;
+                this.Hide();
+                frm.ShowDialog();
+                this.Visible = true;
+                UpdateDepartments();
+            }
         }
     }
 }
