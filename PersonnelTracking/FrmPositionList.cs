@@ -67,5 +67,16 @@ namespace PersonnelTracking
                 UpdatePositions();
             }
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure to delete this Position", "Warning", MessageBoxButtons.YesNo);
+            if (DialogResult.Yes == result)
+            {
+                PositionBLL.DeletePosition(detail.ID);
+                MessageBox.Show("Position was Deleted");
+                UpdatePositions();
+            }
+        }
     }
 }

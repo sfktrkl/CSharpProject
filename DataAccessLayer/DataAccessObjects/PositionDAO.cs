@@ -35,6 +35,20 @@ namespace DataAccessLayer.DataAccessObjects
             }
         }
 
+        public static void DeletePosition(int positionID)
+        {
+            try
+            {
+                Position position = db.Positions.First(x => x.ID == positionID);
+                db.Positions.DeleteOnSubmit(position);
+                db.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static List<PositionDTO> GetPositions()
         {
             try

@@ -19,6 +19,11 @@ namespace BusinessLogicLayer
             EmployeeDAO.UpdateEmployee(position);
         }
 
+        public static void DeletePosition(int positionID)
+        {
+            PositionDAO.DeletePosition(positionID);
+        }
+
         public static List<PositionDTO> GetPositions()
         {
             return PositionDAO.GetPositions();
