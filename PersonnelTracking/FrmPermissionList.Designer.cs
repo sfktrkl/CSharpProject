@@ -51,6 +51,8 @@ namespace PersonnelTracking
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.panelTop = new System.Windows.Forms.Panel();
             this.panelRight = new System.Windows.Forms.Panel();
+            this.cmbState = new System.Windows.Forms.ComboBox();
+            this.lblState = new System.Windows.Forms.Label();
             this.txtDayAmount = new System.Windows.Forms.TextBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -61,8 +63,6 @@ namespace PersonnelTracking
             this.btnClose = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.cmbState = new System.Windows.Forms.ComboBox();
-            this.lblState = new System.Windows.Forms.Label();
             this.groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.panelTop.SuspendLayout();
@@ -244,6 +244,7 @@ namespace PersonnelTracking
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView.Location = new System.Drawing.Point(0, 144);
+            this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.Size = new System.Drawing.Size(800, 338);
             this.dataGridView.TabIndex = 7;
@@ -277,6 +278,23 @@ namespace PersonnelTracking
             this.panelRight.Name = "panelRight";
             this.panelRight.Size = new System.Drawing.Size(397, 144);
             this.panelRight.TabIndex = 18;
+            // 
+            // cmbState
+            // 
+            this.cmbState.FormattingEnabled = true;
+            this.cmbState.Location = new System.Drawing.Point(267, 88);
+            this.cmbState.Name = "cmbState";
+            this.cmbState.Size = new System.Drawing.Size(121, 21);
+            this.cmbState.TabIndex = 26;
+            // 
+            // lblState
+            // 
+            this.lblState.AutoSize = true;
+            this.lblState.Location = new System.Drawing.Point(199, 91);
+            this.lblState.Name = "lblState";
+            this.lblState.Size = new System.Drawing.Size(32, 13);
+            this.lblState.TabIndex = 27;
+            this.lblState.Text = "State";
             // 
             // txtDayAmount
             // 
@@ -375,6 +393,7 @@ namespace PersonnelTracking
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAdd
             // 
@@ -385,23 +404,6 @@ namespace PersonnelTracking
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // cmbState
-            // 
-            this.cmbState.FormattingEnabled = true;
-            this.cmbState.Location = new System.Drawing.Point(267, 88);
-            this.cmbState.Name = "cmbState";
-            this.cmbState.Size = new System.Drawing.Size(121, 21);
-            this.cmbState.TabIndex = 26;
-            // 
-            // lblState
-            // 
-            this.lblState.AutoSize = true;
-            this.lblState.Location = new System.Drawing.Point(199, 91);
-            this.lblState.Name = "lblState";
-            this.lblState.Size = new System.Drawing.Size(32, 13);
-            this.lblState.TabIndex = 27;
-            this.lblState.Text = "State";
             // 
             // FrmPermissionList
             // 

@@ -24,6 +24,11 @@ namespace BusinessLogicLayer
             PermissionDAO.UpdatePermission(permissionID, permissionState);
         }
 
+        public static void DeletePermission(int permissionID)
+        {
+            PermissionDAO.DeletePermission(permissionID);
+        }
+
         public static PermissionDTO GetAll()
         {
             PermissionDTO dto = new PermissionDTO();

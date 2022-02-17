@@ -179,5 +179,22 @@ namespace PersonnelTracking
             UpdatePermissions();
             CleanFilter();
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure to delete this permission", "Warning", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                if (detail.State == PermissionStates.Approved || detail.State == PermissionStates.Disapproved)
+                    MessageBox.Show("You cannot delete approved or disapproved permissions");
+                else
+                {
+                    PermissionBLL.DeletePermission(detail.PermissionID);
+                    MessageBox.Show("Permission was deleted");
+                    UpdatePermissions();
+                    CleanFilter();
+                }
+            }
+        }
     }
 }

@@ -51,6 +51,20 @@ namespace DataAccessLayer.DataAccessObjects
             }
         }
 
+        public static void DeletePermission(int permissionID)
+        {
+            try
+            {
+                Permission pr = db.Permissions.First(x => x.ID == permissionID);
+                db.Permissions.DeleteOnSubmit(pr);
+                db.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static List<PermissionState> GetStates()
         {
             return db.PermissionStates.ToList();
