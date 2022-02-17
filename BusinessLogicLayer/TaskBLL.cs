@@ -17,6 +17,10 @@ namespace BusinessLogicLayer
         {
             TaskDAO.UpdateTask(task);
         }
+        public static void DeleteTask(int taskID)
+        {
+            TaskDAO.DeleteTask(taskID);
+        }
 
         public static TaskDTO GetAll()
         {

@@ -37,6 +37,20 @@ namespace DataAccessLayer.DataAccessObjects
             }
         }
 
+        public static void DeleteTask(int taskID)
+        {
+            try
+            {
+                Task ts = db.Tasks.First(x => x.ID == taskID);
+                db.Tasks.DeleteOnSubmit(ts);
+                db.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static List<TaskState> GetTaskStates()
         {
             return db.TaskStates.ToList();
