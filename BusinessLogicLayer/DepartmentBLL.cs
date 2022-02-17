@@ -17,6 +17,11 @@ namespace BusinessLogicLayer
             DepartmentDAO.UpdateDepartment(department);
         }
 
+        public static void DeleteDepartment(int departmentID)
+        {
+            DepartmentDAO.DeleteDepartment(departmentID);
+        }
+
         public static List<Department> GetDepartments()
         {
             return DepartmentDAO.GetDepartments();

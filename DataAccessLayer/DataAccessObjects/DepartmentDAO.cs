@@ -33,6 +33,20 @@ namespace DataAccessLayer.DataAccessObjects
             }
         }
 
+        public static void DeleteDepartment(int departmentID)
+        {
+            try
+            {
+                Department department = db.Departments.First(x => x.ID == departmentID);
+                db.Departments.DeleteOnSubmit(department);
+                db.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static List<Department> GetDepartments()
         {
             return db.Departments.ToList();

@@ -62,5 +62,16 @@ namespace PersonnelTracking
                 UpdateDepartments();
             }
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure to delete this Department", "Warning!!", MessageBoxButtons.YesNo);
+            if (DialogResult.Yes == result)
+            {
+                DepartmentBLL.DeleteDepartment(detail.ID);
+                MessageBox.Show("Department was Deleted");
+                UpdateDepartments();
+            }
+        }
     }
 }
