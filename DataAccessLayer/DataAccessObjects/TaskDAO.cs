@@ -51,6 +51,21 @@ namespace DataAccessLayer.DataAccessObjects
             }
         }
 
+        public static void ApproveTask(int taskID, bool isAdmin)
+        {
+            try
+            {
+                Task tsk = db.Tasks.First(x => x.ID == taskID);
+                tsk.State = isAdmin ? TaskStates.Approved : TaskStates.Delivered;
+                tsk.DeliveryDate = DateTime.Today;
+                db.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static List<TaskState> GetTaskStates()
         {
             return db.TaskStates.ToList();

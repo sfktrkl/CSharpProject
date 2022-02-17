@@ -30,6 +30,8 @@ namespace PersonnelTracking
         private void UpdateTasks()
         {
             dto = TaskBLL.GetAll();
+            if (!User.IsAdmin)
+                dto.Tasks = dto.Tasks.Where(x => x.EmployeeID == User.EmployeeID).ToList();
             dataGridView.DataSource = dto.Tasks;
             cmbDepartment.DataSource = dto.Departments;
             cmbPosition.DataSource = dto.Positions;
@@ -86,6 +88,15 @@ namespace PersonnelTracking
             cmbState.DisplayMember = "Name";
             cmbState.ValueMember = "ID";
             cmbState.SelectedIndex = -1;
+
+            if (!User.IsAdmin)
+            {
+                btnAdd.Visible = false;
+                btnUpdate.Visible = false;
+                btnDelete.Visible = false;
+                panelLeft.Hide();
+                btnApprove.Text = "Delivery";
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -170,6 +181,25 @@ namespace PersonnelTracking
             {
                 TaskBLL.DeleteTask(detail.TaskID);
                 MessageBox.Show("Task was Deleted");
+                UpdateTasks();
+                CleanFilter();
+            }
+        }
+
+        private void btnApprove_Click(object sender, EventArgs e)
+        {
+            if (User.IsAdmin && detail.StateID == TaskStates.OnEmployee && detail.EmployeeID != User.EmployeeID)
+                MessageBox.Show("Before approve a task employee have to delivery task");
+            else if (User.IsAdmin && detail.StateID == TaskStates.Approved)
+                MessageBox.Show("This task is already approved");
+            else if (!User.IsAdmin && detail.StateID == TaskStates.Delivered)
+                MessageBox.Show("This task is already delivered");
+            else if (!User.IsAdmin && detail.StateID == TaskStates.Approved)
+                MessageBox.Show("This task is already approved");
+            else
+            {
+                TaskBLL.ApproveTask(detail.TaskID, User.IsAdmin);
+                MessageBox.Show("Task was Updated");
                 UpdateTasks();
                 CleanFilter();
             }

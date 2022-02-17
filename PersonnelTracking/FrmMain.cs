@@ -1,4 +1,7 @@
-﻿using System.Windows.Forms;
+﻿using DataAccessLayer.DataTransferObjects;
+using System.Windows.Forms;
+using BusinessLogicLayer;
+using System.Linq;
 using System;
 
 namespace PersonnelTracking
@@ -10,6 +13,16 @@ namespace PersonnelTracking
             InitializeComponent();
         }
 
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            if (!User.IsAdmin)
+            {
+                btnDepartment.Visible = false;
+                btnPosition.Visible = false;
+                btnPermission.Location = new System.Drawing.Point(93, 41);
+            }
+        }
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -17,7 +30,17 @@ namespace PersonnelTracking
 
         private void btnEmployee_Click(object sender, EventArgs e)
         {
-            Helper.ShowForm(this, new FrmEmployeeList());
+            if (!User.IsAdmin)
+            {
+                EmployeeDTO dto = EmployeeBLL.GetAll();
+                Helper.ShowForm(this, new FrmEmployee()
+                { 
+                    isUpdate = true,
+                    detail = dto.Employees.First(x => x.EmployeeID == User.EmployeeID)
+                });
+            }
+            else
+                Helper.ShowForm(this, new FrmEmployeeList());
         }
 
         private void btnTask_Click(object sender, EventArgs e)

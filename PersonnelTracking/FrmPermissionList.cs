@@ -35,6 +35,8 @@ namespace PersonnelTracking
         private void UpdatePermissions()
         {
             dto = PermissionBLL.GetAll();
+            if (!User.IsAdmin)
+                dto.Permissions = dto.Permissions.Where(x => x.EmployeeID == User.EmployeeID).ToList();
             dataGridView.DataSource = dto.Permissions;
             cmbDepartment.DataSource = dto.Departments;
             cmbPosition.DataSource = dto.Positions;
@@ -90,6 +92,16 @@ namespace PersonnelTracking
             cmbState.DisplayMember = "Name";
             cmbState.ValueMember = "ID";
             cmbState.SelectedIndex = -1;
+
+            if (!User.IsAdmin)
+            {
+                btnApprove.Visible = false;
+                btnDisapprove.Visible = false;
+                btnDelete.Visible = false;
+                panelLeft.Hide();
+                btnAdd.Location = new System.Drawing.Point(12, 13);
+                btnUpdate.Location = new System.Drawing.Point(93, 13);
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -151,6 +163,8 @@ namespace PersonnelTracking
         {
             if (detail.PermissionID == 0)
                 MessageBox.Show("please select a permission from table");
+            else if (detail.State == PermissionStates.Approved || detail.State == PermissionStates.Disapproved)
+                MessageBox.Show("You cannot update approved or disapproved permissions");
             else
             {
                 FrmPermission frm = new FrmPermission

@@ -25,6 +25,8 @@ namespace PersonnelTracking
         private void UpdateSalaries()
         {
             dto = SalaryBLL.GetAll();
+            if (!User.IsAdmin)
+                dto.Salaries = dto.Salaries.Where(x => x.EmployeeID == User.EmployeeID).ToList();
             dataGridView.DataSource = dto.Salaries;
             cmbDepartment.DataSource = dto.Departments;
             cmbPosition.DataSource = dto.Positions;
@@ -86,6 +88,14 @@ namespace PersonnelTracking
             cmbMonth.DisplayMember = "Name";
             cmbMonth.ValueMember = "ID";
             cmbMonth.SelectedIndex = -1;
+
+            if (!User.IsAdmin)
+            {
+                btnAdd.Visible = false;
+                btnUpdate.Visible = false;
+                btnDelete.Visible = false;
+                panelLeft.Hide();
+            }
         }
 
         private void cmbDepartment_SelectionChangeCommitted(object sender, EventArgs e)

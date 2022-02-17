@@ -119,6 +119,7 @@ namespace PersonnelTracking
             this.btnApprove.TabIndex = 4;
             this.btnApprove.Text = "Approve";
             this.btnApprove.UseVisualStyleBackColor = true;
+            this.btnApprove.Click += new System.EventHandler(this.btnApprove_Click);
             // 
             // btnUpdate
             // 

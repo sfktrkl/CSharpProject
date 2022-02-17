@@ -22,6 +22,11 @@ namespace BusinessLogicLayer
             TaskDAO.DeleteTask(taskID);
         }
 
+        public static void ApproveTask(int taskID, bool isAdmin)
+        {
+            TaskDAO.ApproveTask(taskID, isAdmin);
+        }
+
         public static TaskDTO GetAll()
         {
             TaskDTO dto = new TaskDTO();
