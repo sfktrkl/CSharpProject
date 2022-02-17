@@ -44,6 +44,20 @@ namespace DataAccessLayer.DataAccessObjects
             }
         }
 
+        public static void DeleteEmployee(int employeeID)
+        {
+            try
+            {
+                Employee emp = db.Employees.First(x => x.ID == employeeID);
+                db.Employees.DeleteOnSubmit(emp);
+                db.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static void UpdateEmployee(int employeeID, int amount)
         {
             try

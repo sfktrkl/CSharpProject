@@ -18,6 +18,11 @@ namespace BusinessLogicLayer
             EmployeeDAO.UpdateEmployee(employee);
         }
 
+        public static void DeleteEmployee(int employeeID)
+        {
+            EmployeeDAO.DeleteEmployee(employeeID);
+        }
+
         public static EmployeeDTO GetAll()
         {
             EmployeeDTO dto = new EmployeeDTO();
