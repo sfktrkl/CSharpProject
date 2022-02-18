@@ -63,6 +63,7 @@ namespace PersonnelTracking
             this.btnClose = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
             this.groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.panelTop.SuspendLayout();
@@ -262,6 +263,7 @@ namespace PersonnelTracking
             // 
             // panelRight
             // 
+            this.panelRight.Controls.Add(this.btnExport);
             this.panelRight.Controls.Add(this.cmbState);
             this.panelRight.Controls.Add(this.lblState);
             this.panelRight.Controls.Add(this.txtDayAmount);
@@ -405,6 +407,16 @@ namespace PersonnelTracking
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(313, 115);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(75, 23);
+            this.btnExport.TabIndex = 11;
+            this.btnExport.Text = "Export";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // FrmPermissionList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -469,5 +481,6 @@ namespace PersonnelTracking
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.ComboBox cmbState;
         private System.Windows.Forms.Label lblState;
+        private System.Windows.Forms.Button btnExport;
     }
 }

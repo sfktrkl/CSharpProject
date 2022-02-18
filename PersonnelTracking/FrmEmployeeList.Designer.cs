@@ -48,6 +48,7 @@ namespace PersonnelTracking
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.panelBottom.SuspendLayout();
@@ -55,6 +56,7 @@ namespace PersonnelTracking
             // 
             // panelTop
             // 
+            this.panelTop.Controls.Add(this.btnExport);
             this.panelTop.Controls.Add(this.btnClear);
             this.panelTop.Controls.Add(this.btnSearch);
             this.panelTop.Controls.Add(this.cmbPosition);
@@ -240,6 +242,16 @@ namespace PersonnelTracking
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(713, 71);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(75, 23);
+            this.btnExport.TabIndex = 10;
+            this.btnExport.Text = "Export";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // FrmEmployeeList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -285,5 +297,6 @@ namespace PersonnelTracking
         private System.Windows.Forms.Label lblDepartment;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnExport;
     }
 }

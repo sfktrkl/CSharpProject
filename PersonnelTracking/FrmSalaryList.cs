@@ -178,5 +178,10 @@ namespace PersonnelTracking
                 CleanFilter();
             }
         }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            Export.ToExcel(dataGridView);
+        }
     }
 }

@@ -60,6 +60,7 @@ namespace PersonnelTracking
             this.lblSurname = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblUserNo = new System.Windows.Forms.Label();
+            this.btnExport = new System.Windows.Forms.Button();
             this.panelBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.panelTop.SuspendLayout();
@@ -155,6 +156,7 @@ namespace PersonnelTracking
             // 
             // panelRight
             // 
+            this.panelRight.Controls.Add(this.btnExport);
             this.panelRight.Controls.Add(this.cmbState);
             this.panelRight.Controls.Add(this.lblState);
             this.panelRight.Controls.Add(this.groupBox);
@@ -373,6 +375,16 @@ namespace PersonnelTracking
             this.lblUserNo.TabIndex = 11;
             this.lblUserNo.Text = "User Number";
             // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(313, 76);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(75, 23);
+            this.btnExport.TabIndex = 26;
+            this.btnExport.Text = "Export";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // FrmTaskList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -435,5 +447,6 @@ namespace PersonnelTracking
         private System.Windows.Forms.Label lblUserNo;
         private System.Windows.Forms.Button btnApprove;
         private System.Windows.Forms.ComboBox cmbState;
+        private System.Windows.Forms.Button btnExport;
     }
 }

@@ -60,6 +60,7 @@ namespace PersonnelTracking
             this.btnClose = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
             this.groupBox.SuspendLayout();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -257,6 +258,7 @@ namespace PersonnelTracking
             // 
             // panelRight
             // 
+            this.panelRight.Controls.Add(this.btnExport);
             this.panelRight.Controls.Add(this.cmbMonth);
             this.panelRight.Controls.Add(this.txtSalary);
             this.panelRight.Controls.Add(this.txtYear);
@@ -373,6 +375,16 @@ namespace PersonnelTracking
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(313, 76);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(75, 23);
+            this.btnExport.TabIndex = 57;
+            this.btnExport.Text = "Export";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // FrmSalaryList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -434,5 +446,6 @@ namespace PersonnelTracking
         private System.Windows.Forms.Label lblMonth;
         private System.Windows.Forms.Label lblYear;
         private System.Windows.Forms.Label lblSalary;
+        private System.Windows.Forms.Button btnExport;
     }
 }
