@@ -84,6 +84,12 @@
     <Compile Include="DAL\SALE.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmStockAlert.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,8 +156,12 @@
     <Compile Include="FrmAddStock.Designer.cs">
       <DependentUpon>FrmAddStock.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmStockAlert.resx">
       <DependentUpon>FrmStockAlert.cs</DependentUpon>
     </EmbeddedResource>
