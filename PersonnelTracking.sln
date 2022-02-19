@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer", "Busin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{3E19A622-B449-4CAF-B251-49FCAE27BB51}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTracking", "StockTracking\StockTracking.csproj", "{5C6B9E51-C653-4B84-8376-886D7F632587}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{3E19A622-B449-4CAF-B251-49FCAE27BB51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E19A622-B449-4CAF-B251-49FCAE27BB51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E19A622-B449-4CAF-B251-49FCAE27BB51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C6B9E51-C653-4B84-8376-886D7F632587}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C6B9E51-C653-4B84-8376-886D7F632587}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C6B9E51-C653-4B84-8376-886D7F632587}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C6B9E51-C653-4B84-8376-886D7F632587}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
