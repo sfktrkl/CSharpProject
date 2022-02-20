@@ -11,20 +11,18 @@ namespace StockTracking.DAL.DAO
         {
             try
             {
+                List<SALE> sales = new List<SALE>();
                 if (entity.ID != 0)
-                {
-                    SALE sales = db.SALES.First(x => x.ID == entity.ID);
-                    sales.isDeleted = true;
-                    sales.DeletedDate = DateTime.Today;
-                }
+                    sales.Add(db.SALES.First(x => x.ID == entity.ID));
                 else if (entity.ProductID != 0)
+                    sales.AddRange(db.SALES.Where(x => x.ProductID == entity.ProductID));
+                else if (entity.CustomerID != 0)
+                    sales.AddRange(db.SALES.Where(x => x.CustomerID == entity.CustomerID));
+
+                foreach (var item in sales)
                 {
-                    List<SALE> sales = db.SALES.Where(x => x.ProductID == entity.ProductID).ToList();
-                    foreach (var item in sales)
-                    {
-                        item.isDeleted = true;
-                        item.DeletedDate = DateTime.Today;
-                    }
+                    item.isDeleted = true;
+                    item.DeletedDate = DateTime.Today;
                 }
                 db.SaveChanges();
                 return true;

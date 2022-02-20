@@ -22,7 +22,7 @@ namespace StockTracking
             this.Close();
         }
 
-        private void UpdateCategories()
+        private void UpdateCustomers()
         {
             dto = bll.Select();
             dataGridView.DataSource = dto.Customers;
@@ -31,12 +31,12 @@ namespace StockTracking
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Helper.ShowForm(this, new FrmCustomer());
-            UpdateCategories();
+            UpdateCustomers();
         }
 
         private void FrmCustomerList_Load(object sender, EventArgs e)
         {
-            UpdateCategories();
+            UpdateCustomers();
             dataGridView.Columns[0].Visible = false;
             dataGridView.Columns[1].HeaderText = "Customer Name";
         }
@@ -61,7 +61,26 @@ namespace StockTracking
             else
             {
                 Helper.ShowForm(this, new FrmCustomer(detail));
-                UpdateCategories();
+                UpdateCustomers();
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (detail.ID == 0)
+                MessageBox.Show("Please select a customer from table");
+            else
+            {
+                DialogResult result = MessageBox.Show("Are you sure", "Warning", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    if (bll.Delete(detail))
+                    {
+                        MessageBox.Show("Customer was Deleted");
+                        UpdateCustomers();
+                        txtCustomerName.Clear();
+                    }
+                }
             }
         }
     }

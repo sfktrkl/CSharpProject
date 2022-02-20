@@ -8,10 +8,19 @@ namespace StockTracking.BLL
     public class CustomerBLL : IBLL<CustomerDetailDTO, CustomerDTO>
     {
         private readonly CustomerDAO customers = new CustomerDAO();
+        private readonly SalesDAO sales = new SalesDAO();
 
         public bool Delete(CustomerDetailDTO entity)
         {
-            throw new NotImplementedException();
+            CUSTOMER customer = new CUSTOMER
+            {
+                ID = entity.ID
+            };
+            SALE sale = new SALE
+            {
+                CustomerID = entity.ID
+            };
+            return customers.Delete(customer) && sales.Delete(sale);
         }
 
         public bool GetBack(CustomerDetailDTO entity)
