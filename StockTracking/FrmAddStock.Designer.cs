@@ -55,15 +55,18 @@ namespace StockTracking
             this.btnSave.TabIndex = 47;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // dataGridView
             // 
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView.Location = new System.Drawing.Point(0, 47);
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(211, 150);
+            this.dataGridView.Size = new System.Drawing.Size(404, 150);
             this.dataGridView.TabIndex = 1;
+            this.dataGridView.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_RowEnter);
             // 
             // panelTop
             // 
@@ -72,7 +75,7 @@ namespace StockTracking
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(211, 47);
+            this.panelTop.Size = new System.Drawing.Size(404, 47);
             this.panelTop.TabIndex = 0;
             // 
             // cmbCategory
@@ -82,6 +85,7 @@ namespace StockTracking
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(121, 21);
             this.cmbCategory.TabIndex = 13;
+            this.cmbCategory.SelectionChangeCommitted += new System.EventHandler(this.cmbCategory_SelectionChangeCommitted);
             // 
             // lblCategory
             // 
@@ -107,9 +111,9 @@ namespace StockTracking
             this.panelRight.Controls.Add(this.dataGridView);
             this.panelRight.Controls.Add(this.panelTop);
             this.panelRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelRight.Location = new System.Drawing.Point(233, 0);
+            this.panelRight.Location = new System.Drawing.Point(223, 0);
             this.panelRight.Name = "panelRight";
-            this.panelRight.Size = new System.Drawing.Size(211, 197);
+            this.panelRight.Size = new System.Drawing.Size(404, 197);
             this.panelRight.TabIndex = 34;
             // 
             // txtStock
@@ -166,7 +170,7 @@ namespace StockTracking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(444, 197);
+            this.ClientSize = new System.Drawing.Size(627, 197);
             this.ControlBox = false;
             this.Controls.Add(this.txtStock);
             this.Controls.Add(this.lblStock);
@@ -183,6 +187,7 @@ namespace StockTracking
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Stock";
+            this.Load += new System.EventHandler(this.FrmAddStock_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
