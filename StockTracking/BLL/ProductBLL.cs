@@ -9,10 +9,19 @@ namespace StockTracking.BLL
     {
         private readonly CategoryDAO categories = new CategoryDAO();
         private readonly ProductDAO products = new ProductDAO();
+        private readonly SalesDAO sales = new SalesDAO();
 
         public bool Delete(ProductDetailDTO entity)
         {
-            throw new NotImplementedException();
+            PRODUCT product = new PRODUCT
+            {
+                ID = entity.ProductID
+            };
+            SALE sale = new SALE
+            {
+                ProductID = entity.ProductID
+            };
+            return products.Delete(product) && sales.Delete(sale);
         }
 
         public bool GetBack(ProductDetailDTO entity)
