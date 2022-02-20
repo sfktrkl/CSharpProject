@@ -111,9 +111,9 @@ namespace StockTracking
             this.lblSalesDate.AutoSize = true;
             this.lblSalesDate.Location = new System.Drawing.Point(12, 62);
             this.lblSalesDate.Name = "lblSalesDate";
-            this.lblSalesDate.Size = new System.Drawing.Size(49, 13);
+            this.lblSalesDate.Size = new System.Drawing.Size(59, 13);
             this.lblSalesDate.TabIndex = 21;
-            this.lblSalesDate.Text = "Category";
+            this.lblSalesDate.Text = "Sales Date";
             // 
             // dtbStart
             // 
@@ -130,6 +130,7 @@ namespace StockTracking
             this.btnClear.TabIndex = 19;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnSearch
             // 
@@ -139,6 +140,7 @@ namespace StockTracking
             this.btnSearch.TabIndex = 18;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtSales
             // 
@@ -347,6 +349,7 @@ namespace StockTracking
             // 
             // dataGridView
             // 
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView.Location = new System.Drawing.Point(0, 90);
@@ -370,6 +373,7 @@ namespace StockTracking
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sales List";
+            this.Load += new System.EventHandler(this.FrmSalesList_Load);
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
             this.groupBoxSales.ResumeLayout(false);
