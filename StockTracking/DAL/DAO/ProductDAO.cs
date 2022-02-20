@@ -39,7 +39,18 @@ namespace StockTracking.DAL.DAO
 
         public bool GetBack(int ID)
         {
-            throw new NotImplementedException();
+            try
+            {
+                PRODUCT product = db.PRODUCTs.First(x => x.ID == ID);
+                product.isDeleted = false;
+                product.DeletedDate = null;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public bool Insert(PRODUCT entity)
@@ -56,11 +67,11 @@ namespace StockTracking.DAL.DAO
             }
         }
 
-        public List<ProductDetailDTO> Select()
+        public List<ProductDetailDTO> Select(bool isDeleted)
         {
             try
             {
-                return (from p in db.PRODUCTs.Where(x => x.isDeleted == false)
+                return (from p in db.PRODUCTs.Where(x => x.isDeleted == isDeleted)
                         join c in db.CATEGORies on p.CategoryID equals c.ID
                         select new ProductDetailDTO
                         {
@@ -69,7 +80,8 @@ namespace StockTracking.DAL.DAO
                             StockAmount = p.StockAmount,
                             Price = p.Price,
                             ProductID = p.ID,
-                            CategoryID = c.ID
+                            CategoryID = c.ID,
+                            isCategoryDeleted = c.isDeleted
                         }).OrderBy(x => x.ProductName).ToList();
             }
             catch (Exception ex)

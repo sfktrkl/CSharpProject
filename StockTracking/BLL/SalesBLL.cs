@@ -28,7 +28,12 @@ namespace StockTracking.BLL
 
         public bool GetBack(SalesDetailDTO entity)
         {
-            throw new NotImplementedException();
+            PRODUCT product = new PRODUCT
+            {
+                ID = entity.ProductID,
+                StockAmount = entity.StockAmount - entity.SalesAmount
+            };
+            return  sales.GetBack(entity.SalesID) && products.Update(product);
         }
 
         public bool Insert(SalesDetailDTO entity)
@@ -50,14 +55,14 @@ namespace StockTracking.BLL
             return (sales.Insert(sale) && products.Update(product));
         }
 
-        public SalesDTO Select()
+        public SalesDTO Select(bool isDeleted = false)
         {
             SalesDTO dto = new SalesDTO
             {
-                Sales = sales.Select(),
-                Products = products.Select(),
-                Customers = customers.Select(),
-                Categories = categories.Select()
+                Sales = sales.Select(isDeleted),
+                Products = products.Select(isDeleted),
+                Customers = customers.Select(isDeleted),
+                Categories = categories.Select(isDeleted)
             };
             return dto;
         }

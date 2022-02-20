@@ -35,7 +35,18 @@ namespace StockTracking.DAL.DAO
 
         public bool GetBack(int ID)
         {
-            throw new NotImplementedException();
+            try
+            {
+                SALE sale = db.SALES.First(x => x.ID == ID);
+                sale.isDeleted = false;
+                sale.DeletedDate = null;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public bool Insert(SALE entity)
@@ -52,11 +63,11 @@ namespace StockTracking.DAL.DAO
             }
         }
 
-        public List<SalesDetailDTO> Select()
+        public List<SalesDetailDTO> Select(bool isDeleted)
         {
             try
             {
-                return (from s in db.SALES.Where(x => x.isDeleted == false)
+                return (from s in db.SALES.Where(x => x.isDeleted == isDeleted)
                         join p in db.PRODUCTs on s.ProductID equals p.ID
                         join c in db.CUSTOMERs on s.CustomerID equals c.ID
                         join category in db.CATEGORies on s.CategoryID equals category.ID
@@ -71,7 +82,11 @@ namespace StockTracking.DAL.DAO
                             CategoryID = s.CategoryID,
                             Price = s.ProductSalePrice,
                             SalesAmount = s.ProductSaleAmount,
-                            SalesDate = s.SalesDate
+                            SalesDate = s.SalesDate,
+                            StockAmount = p.StockAmount,
+                            isCategoryDeleted = category.isDeleted,
+                            isCustomerDeleted = c.isDeleted,
+                            isProductDeleted = p.isDeleted
                         }).OrderBy(x => x.SalesDate).ToList();
             }
             catch (Exception ex)

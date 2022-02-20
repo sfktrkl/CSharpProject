@@ -25,7 +25,7 @@ namespace StockTracking.BLL
 
         public bool GetBack(CustomerDetailDTO entity)
         {
-            throw new NotImplementedException();
+            return customers.GetBack(entity.ID);
         }
 
         public bool Insert(CustomerDetailDTO entity)
@@ -37,11 +37,11 @@ namespace StockTracking.BLL
             return customers.Insert(customer);
         }
 
-        public CustomerDTO Select()
+        public CustomerDTO Select(bool isDeleted = false)
         {
             return new CustomerDTO
             {
-                Customers = customers.Select()
+                Customers = customers.Select(isDeleted)
             };
         }
 

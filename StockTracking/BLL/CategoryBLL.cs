@@ -25,7 +25,7 @@ namespace StockTracking.BLL
 
         public bool GetBack(CategoryDetailDTO entity)
         {
-            throw new NotImplementedException();
+            return categories.GetBack(entity.ID);
         }
 
         public bool Insert(CategoryDetailDTO entity)
@@ -37,11 +37,11 @@ namespace StockTracking.BLL
             return categories.Insert(category);
         }
 
-        public CategoryDTO Select()
+        public CategoryDTO Select(bool isDeleted = false)
         {
             return new CategoryDTO()
             {
-                Categories = categories.Select()
+                Categories = categories.Select(isDeleted)
             };
         }
 

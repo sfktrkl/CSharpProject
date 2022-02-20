@@ -26,7 +26,7 @@ namespace StockTracking.BLL
 
         public bool GetBack(ProductDetailDTO entity)
         {
-            throw new NotImplementedException();
+            return products.GetBack(entity.ProductID);
         }
 
         public bool Insert(ProductDetailDTO entity)
@@ -40,12 +40,12 @@ namespace StockTracking.BLL
             return products.Insert(product);
         }
 
-        public ProductDTO Select()
+        public ProductDTO Select(bool isDeleted = false)
         {
             return new ProductDTO
             {
-                Categories = categories.Select(),
-                Products = products.Select()
+                Categories = categories.Select(isDeleted),
+                Products = products.Select(isDeleted)
             };
         }
 

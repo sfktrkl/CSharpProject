@@ -30,12 +30,12 @@ namespace StockTracking
         private void InitializeComponent()
         {
             this.panelTop = new System.Windows.Forms.Panel();
+            this.cmbDeleted = new System.Windows.Forms.ComboBox();
             this.lblDeleted = new System.Windows.Forms.Label();
             this.panelBottom = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnGetBack = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.cmbDeleted = new System.Windows.Forms.ComboBox();
             this.panelTop.SuspendLayout();
             this.panelBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -50,6 +50,15 @@ namespace StockTracking
             this.panelTop.Name = "panelTop";
             this.panelTop.Size = new System.Drawing.Size(800, 57);
             this.panelTop.TabIndex = 0;
+            // 
+            // cmbDeleted
+            // 
+            this.cmbDeleted.FormattingEnabled = true;
+            this.cmbDeleted.Location = new System.Drawing.Point(80, 17);
+            this.cmbDeleted.Name = "cmbDeleted";
+            this.cmbDeleted.Size = new System.Drawing.Size(121, 21);
+            this.cmbDeleted.TabIndex = 3;
+            this.cmbDeleted.SelectionChangeCommitted += new System.EventHandler(this.cmbDeleted_SelectionChangeCommitted);
             // 
             // lblDeleted
             // 
@@ -88,9 +97,11 @@ namespace StockTracking
             this.btnGetBack.TabIndex = 5;
             this.btnGetBack.Text = "GetBack";
             this.btnGetBack.UseVisualStyleBackColor = true;
+            this.btnGetBack.Click += new System.EventHandler(this.btnGetBack_Click);
             // 
             // dataGridView
             // 
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView.Location = new System.Drawing.Point(0, 57);
@@ -98,14 +109,7 @@ namespace StockTracking
             this.dataGridView.ReadOnly = true;
             this.dataGridView.Size = new System.Drawing.Size(800, 343);
             this.dataGridView.TabIndex = 2;
-            // 
-            // cmbDeleted
-            // 
-            this.cmbDeleted.FormattingEnabled = true;
-            this.cmbDeleted.Location = new System.Drawing.Point(80, 17);
-            this.cmbDeleted.Name = "cmbDeleted";
-            this.cmbDeleted.Size = new System.Drawing.Size(121, 21);
-            this.cmbDeleted.TabIndex = 3;
+            this.dataGridView.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_RowEnter);
             // 
             // FrmDeleted
             // 

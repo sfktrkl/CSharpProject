@@ -122,6 +122,7 @@ namespace StockTracking
             detail.ProductName = dataGridView.Rows[e.RowIndex].Cells[1].Value.ToString();
             detail.Price = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[7].Value);
             detail.SalesAmount = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[6].Value);
+            detail.StockAmount = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[9].Value);
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
