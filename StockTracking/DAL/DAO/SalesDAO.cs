@@ -9,7 +9,18 @@ namespace StockTracking.DAL.DAO
     {
         public bool Delete(SALE entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                SALE sales = db.SALES.First(x => x.ID == entity.ID);
+                sales.isDeleted = true;
+                sales.DeletedDate = DateTime.Today;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public bool GetBack(int ID)
