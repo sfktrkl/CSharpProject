@@ -59,6 +59,7 @@ namespace StockTracking
             this.txtCategoryName.Name = "txtCategoryName";
             this.txtCategoryName.Size = new System.Drawing.Size(100, 20);
             this.txtCategoryName.TabIndex = 3;
+            this.txtCategoryName.TextChanged += new System.EventHandler(this.txtCategoryName_TextChanged);
             // 
             // lblCategoryName
             // 
@@ -121,6 +122,7 @@ namespace StockTracking
             // 
             // dataGridView
             // 
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView.Location = new System.Drawing.Point(0, 57);
@@ -144,6 +146,7 @@ namespace StockTracking
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Category List";
+            this.Load += new System.EventHandler(this.FrmCategoryList_Load);
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
             this.panelBottom.ResumeLayout(false);
