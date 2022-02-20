@@ -336,6 +336,7 @@ namespace StockTracking
             this.btnUpdate.TabIndex = 4;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnAdd
             // 
@@ -357,6 +358,7 @@ namespace StockTracking
             this.dataGridView.ReadOnly = true;
             this.dataGridView.Size = new System.Drawing.Size(800, 310);
             this.dataGridView.TabIndex = 2;
+            this.dataGridView.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_RowEnter);
             // 
             // FrmSalesList
             // 

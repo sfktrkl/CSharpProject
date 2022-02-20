@@ -11,6 +11,7 @@ namespace StockTracking
     {
         private ProductDTO dto = new ProductDTO();
         private readonly ProductBLL bll = new ProductBLL();
+        private readonly ProductDetailDTO detail = new ProductDetailDTO();
 
         public FrmProductList()
         {
@@ -101,6 +102,26 @@ namespace StockTracking
         private void btnClear_Click(object sender, EventArgs e)
         {
             CleanFilters();
+        }
+
+        private void dataGridView_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            detail.ProductID = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[4].Value);
+            detail.CategoryID = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[5].Value);
+            detail.ProductName = dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+            detail.Price = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[3].Value);
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (detail.ProductID == 0)
+                MessageBox.Show("Please select a product from table");
+            else
+            {
+                Helper.ShowForm(this, new FrmProduct(dto, detail));
+                UpdateProducts();
+                CleanFilters();
+            }
         }
     }
 }

@@ -11,6 +11,7 @@ namespace StockTracking
     {
         private SalesDTO dto = new SalesDTO();
         private readonly SalesBLL bll = new SalesBLL();
+        private readonly SalesDetailDTO detail = new SalesDetailDTO();
 
         public FrmSalesList()
         {
@@ -111,6 +112,28 @@ namespace StockTracking
         private void btnClear_Click(object sender, EventArgs e)
         {
             CleanFilters();
+        }
+
+        private void dataGridView_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            detail.SalesID = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[10].Value);
+            detail.ProductID = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[4].Value);
+            detail.CustomerName = dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+            detail.ProductName = dataGridView.Rows[e.RowIndex].Cells[1].Value.ToString();
+            detail.Price = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[7].Value);
+            detail.SalesAmount = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[6].Value);
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (detail.SalesID == 0)
+                MessageBox.Show("Please select asales from table");
+            else
+            {
+                Helper.ShowForm(this, new FrmSales(dto, detail));
+                UpdateSales();
+                CleanFilters();
+            }
         }
     }
 }
