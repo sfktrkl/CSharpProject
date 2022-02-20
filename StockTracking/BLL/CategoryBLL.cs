@@ -8,10 +8,19 @@ namespace StockTracking.BLL
     public class CategoryBLL : IBLL<CategoryDetailDTO, CategoryDTO>
     {
         private readonly CategoryDAO categories = new CategoryDAO();
+        private readonly ProductDAO products = new ProductDAO();
 
         public bool Delete(CategoryDetailDTO entity)
         {
-            throw new NotImplementedException();
+            CATEGORY category = new CATEGORY
+            {
+                ID = entity.ID
+            };
+            PRODUCT product = new PRODUCT
+            {
+                CategoryID = entity.ID
+            };
+            return categories.Delete(category) && products.Delete(product);
         }
 
         public bool GetBack(CategoryDetailDTO entity)
